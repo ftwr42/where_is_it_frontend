@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MainScreenFab extends StatelessWidget {
+/**class MainScreenFab extends StatelessWidget {
   final VoidCallback onAddFolder;
   final VoidCallback onAddWardrobe;
   final VoidCallback onTakePicture;
@@ -51,4 +51,4 @@ class FolderScreenFab extends StatelessWidget {
       onPressed: onPressed,
     );
   }
-}
+}**/

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer.dart';
+import 'package:where_is_it/drawer/user.dart';
 import 'package:where_is_it/fab/fab.dart';
 import 'package:where_is_it/fab/fab_view.dart';
 import 'package:where_is_it/start/start_view.dart';
@@ -26,10 +27,11 @@ class WiiApp extends StatelessWidget {
       home: Scaffold(
         appBar: WiiAppBar.getBar(),
         drawer: WiiDrawer(),
+        endDrawer: WiiUserDrawer(),  // Right drawer
         /**floatingActionButton: WiiFab(
           key: key,
         ),**/
-        floatingActionButton: MainScreenFab(
+        /**floatingActionButton: MainScreenFab(
           onAddFolder: () {
             // Add Folder specific logic here
             print('Add Folder action');
@@ -46,7 +48,7 @@ class WiiApp extends StatelessWidget {
             // Take Default specific logic here
             print('Take Default action');
           },
-        ),
+        ),**/
         body: StartView(
           key: key,
         ),
