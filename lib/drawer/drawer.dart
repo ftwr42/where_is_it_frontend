@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Drawer extends StatelessWidget {
-  const Drawer({super.key});
+class WiiDrawer extends StatelessWidget {
+  const WiiDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return Drawer();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Fab extends StatelessWidget {
-  const Fab({super.key});
+class WiiFab extends StatelessWidget {
+  const WiiFab({super.key});
 
   @override
   Widget build(BuildContext context) {
