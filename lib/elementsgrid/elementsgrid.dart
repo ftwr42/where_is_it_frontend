@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class WiiGrid extends StatelessWidget {
-  const WiiGrid({super.key});
+class ElementsGrid extends StatelessWidget {
+  const ElementsGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return CustomScrollView(
+      slivers: [],
+    );
     // return SliverGrid(delegate: delegate, gridDelegate: gridDelegate);
   }
 }

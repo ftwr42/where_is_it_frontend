@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:where_is_it/navigation/routing.dart';
 
 class WiiDrawer extends StatefulWidget {
   final List credentialList = [
@@ -13,18 +14,49 @@ class WiiDrawer extends StatefulWidget {
   ];
 
   final List menuList = [
-    {'leading': Icon(Icons.home), 'title': "Home", 'route': ""},
+    {
+      'leading': Icon(Icons.home),
+      'title': "Start View",
+      'route': Routing.STARTVIEW
+    },
+    {
+      'leading': Icon(Icons.add_circle_outline),
+      'title': "Item View",
+      'route': Routing.ITEMVIEW
+    },
+    {
+      'leading': Icon(Icons.add_circle_outline),
+      'title': "Container View",
+      'route': Routing.CONTAINERVIEW
+    },
+    {
+      'leading': Icon(Icons.add_circle_outline),
+      'title': "Login View",
+      'route': Routing.LOGINVIEW
+    },
   ];
 
   final List shopList = [
-    {'leading': Icon(Icons.shop), 'title': "Shop A", 'route': ""},
-    {'leading': Icon(Icons.store), 'title': "Store A", 'route': ""},
-    {'leading': Icon(Icons.storefront), 'title': "Store B", 'route': ""},
+    {'leading': Icon(Icons.shop), 'title': "Shop A", 'route': Routing.ITEMVIEW},
+    {
+      'leading': Icon(Icons.store),
+      'title': "Store A",
+      'route': Routing.ITEMVIEW
+    },
+    {
+      'leading': Icon(Icons.storefront),
+      'title': "Store B",
+      'route': Routing.ITEMVIEW
+    },
   ];
 
   final List settingsList = [
-    {'leading': Icon(Icons.login), 'title': "Login", 'route': ""},
-    {'leading': Icon(Icons.settings), 'title': "Settings", 'route': ""},
+    {'leading': Icon(Icons.login), 'title': "Login", 'route': Routing.ITEMVIEW},
+    {
+      'leading': Icon(Icons.settings),
+      'title': "Settings",
+      'route': Routing.ITEMVIEW
+    },
   ];
 
   WiiDrawer({super.key});
@@ -73,6 +105,9 @@ class _WiiDrawerState extends State<WiiDrawer> {
         runSpacing: 4,
         children: [
           drawerItem(widget.menuList[0]),
+          drawerItem(widget.menuList[1]),
+          drawerItem(widget.menuList[2]),
+          drawerItem(widget.menuList[3]),
           Divider(),
           drawerItem(widget.shopList[0]),
           drawerItem(widget.shopList[1]),
@@ -89,7 +124,7 @@ class _WiiDrawerState extends State<WiiDrawer> {
         leading: item['leading'],
         title: Text(item['title']),
         onTap: () {
-          // Navigator.push(context, item['route']);
+          Navigator.pushNamed(context, item['route']);
         },
       );
 
