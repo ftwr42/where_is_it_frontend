@@ -2,18 +2,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-/**class WiiFab extends StatelessWidget {
-  const WiiFab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButtonLocation: ExpandableFab.location,
-      body: (),
-    );
-  }
-}**/
-
 class WiiFab extends StatelessWidget {
   static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
 
