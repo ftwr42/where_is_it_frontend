@@ -1,8 +1,39 @@
 import 'package:flutter/material.dart';
 
-class WiiDrawer extends StatelessWidget {
-  const WiiDrawer({super.key});
+class WiiDrawer extends StatefulWidget {
+  final List credentialList = [
+    {
+      'text': "Jan Freirich",
+      'style': const TextStyle(fontSize: 22, color: Colors.white60)
+    },
+    {
+      'text': "JanFreirich@gmail.com",
+      'style': const TextStyle(fontSize: 16, color: Colors.white60)
+    },
+  ];
 
+  final List menuList = [
+    {'leading': Icon(Icons.home), 'title': "Home", 'route': ""},
+  ];
+
+  final List shopList = [
+    {'leading': Icon(Icons.shop), 'title': "Shop A", 'route': ""},
+    {'leading': Icon(Icons.store), 'title': "Store A", 'route': ""},
+    {'leading': Icon(Icons.storefront), 'title': "Store B", 'route': ""},
+  ];
+
+  final List settingsList = [
+    {'leading': Icon(Icons.login), 'title': "Login", 'route': ""},
+    {'leading': Icon(Icons.settings), 'title': "Settings", 'route': ""},
+  ];
+
+  WiiDrawer({super.key});
+
+  @override
+  State<WiiDrawer> createState() => _WiiDrawerState();
+}
+
+class _WiiDrawerState extends State<WiiDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -22,26 +53,14 @@ class WiiDrawer extends StatelessWidget {
     return Container(
       color: Colors.blueAccent,
       padding: EdgeInsets.only(top: 15, bottom: 15),
-      child: const Column(
+      child: Column(
         children: [
           CircleAvatar(
             backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
             radius: 50,
           ),
-          Text(
-            "Jan Freirich",
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white60,
-            ),
-          ),
-          Text(
-            "JanFreirich@gmail.com",
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.white60,
-            ),
-          ),
+          credentialText(widget.credentialList[0]),
+          credentialText(widget.credentialList[1]),
         ],
       ),
     );
@@ -53,45 +72,29 @@ class WiiDrawer extends StatelessWidget {
       child: Wrap(
         runSpacing: 4,
         children: [
-          ListTile(
-            leading: Icon(Icons.home_outlined),
-            title: Text("Home"),
-            onTap: () {},
-          ),
+          drawerItem(widget.menuList[0]),
           Divider(),
-          ListTile(
-            leading: Icon(Icons.store),
-            title: Text("Store A"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.storefront),
-            title: Text("Store B"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.local_convenience_store_sharp),
-            title: Text("Store C"),
-            onTap: () {},
-          ),
+          drawerItem(widget.shopList[0]),
+          drawerItem(widget.shopList[1]),
+          drawerItem(widget.shopList[2]),
           Divider(),
-          ListTile(
-            leading: Icon(Icons.login),
-            title: Text("Login"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text("Settings"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.accessibility_new_outlined),
-            title: Text("Credentials"),
-            onTap: () {},
-          ),
+          drawerItem(widget.settingsList[0]),
+          drawerItem(widget.settingsList[1]),
         ],
       ),
     );
   }
+
+  Widget drawerItem(Map<String, dynamic> item) => ListTile(
+        leading: item['leading'],
+        title: Text(item['title']),
+        onTap: () {
+          // Navigator.push(context, item['route']);
+        },
+      );
+
+  Widget credentialText(Map<String, dynamic> item) => Text(
+        item['text'],
+        style: item['style'],
+      );
 }
