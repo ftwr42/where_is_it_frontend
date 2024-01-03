@@ -5,6 +5,12 @@ class StartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return Container(
+    //   child: Center(
+    //       child: Image(
+    //     image: AssetImage('assets/237-536x354.jpg'),
+    //   )),
+    // );
     return CustomScrollView(
       slivers: [],
     );
