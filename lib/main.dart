@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer.dart';
-import 'package:where_is_it/drawer/user.dart';
+import 'package:where_is_it/user/user.dart';
 import 'package:where_is_it/fab/fab.dart';
 import 'package:where_is_it/fab/fab_view.dart';
+import 'package:where_is_it/user/user_view.dart';
 import 'package:where_is_it/start/start_view.dart';
 
 
@@ -28,31 +30,31 @@ class WiiApp extends StatelessWidget {
         appBar: WiiAppBar.getBar(),
         drawer: WiiDrawer(),
         endDrawer: WiiUserDrawer(),  // Right drawer
-        /**floatingActionButton: WiiFab(
+      /**  floatingActionButton: WiiFab(
           key: key,
         ),**/
-        /**floatingActionButton: MainScreenFab(
-          onAddFolder: () {
-            // Add Folder specific logic here
-            print('Add Folder action');
-          },
-          onAddWardrobe: () {
-            // Add Wardrobe specific logic here
-            print('Add Wardrobe action');
-          },
-          onTakePicture: () {
-            // Take Picture specific logic here
-            print('Take Picture action');
-          },
-          onTakeDefault: () {
-            // Take Default specific logic here
-            print('Take Default action');
-          },
-        ),**/
+        floatingActionButton: ExpandableFab(
+          children: [
+            FloatingActionButton.small(
+              heroTag: null,
+              child: const Icon(Icons.edit),
+              onPressed: () {},
+            ),
+            FloatingActionButton.small(
+              heroTag: null,
+              child: const Icon(Icons.search),
+              onPressed: () {},
+            ),
+          ],
+        ),
+
         body: StartView(
           key: key,
         ),
       ),
+      routes: {
+        '/userpage': (context) => UserProfilePage(),
+      },
     );
   }
 }

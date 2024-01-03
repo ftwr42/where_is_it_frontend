@@ -32,13 +32,12 @@ class WiiUserDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text('Edit Profile Pic'),
+            title: Text('Edit Profile'),
             onTap: () {
-              // Add logic for editing profile picture
-              Navigator.pop(context); // Close the drawer
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/userpage'); // Navigate to userpage
             },
           ),
-          // Add more list tiles for additional information
         ],
       ),
     );
