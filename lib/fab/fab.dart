@@ -5,6 +5,6 @@ class WiiFab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return FloatingActionButton(onPressed: () {});
   }
 }
