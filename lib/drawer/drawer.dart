@@ -34,6 +34,11 @@ class WiiDrawer extends StatefulWidget {
       'title': "Login View",
       'route': Routing.LOGINVIEW
     },
+    {
+      'leading': Icon(Icons.add_circle_outline),
+      'title': "Example Transition",
+      'route': Routing.EXAMPLETRANSITION
+    },
   ];
 
   final List shopList = [
@@ -108,6 +113,7 @@ class _WiiDrawerState extends State<WiiDrawer> {
           drawerItem(widget.menuList[1]),
           drawerItem(widget.menuList[2]),
           drawerItem(widget.menuList[3]),
+          drawerItem(widget.menuList[4]),
           Divider(),
           drawerItem(widget.shopList[0]),
           drawerItem(widget.shopList[1]),
