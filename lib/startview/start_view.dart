@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer.dart';
+import 'package:where_is_it/elementsgrid/elements_view.dart';
 import 'package:where_is_it/fab/fab.dart';
-
-import '../elementsgrid/elementsgrid.dart';
 
 class StartView extends StatelessWidget {
   const StartView({super.key});
@@ -14,7 +13,7 @@ class StartView extends StatelessWidget {
       appBar: WiiAppBar.getBar(),
       drawer: WiiDrawer(),
       floatingActionButton: const WiiFab(),
-      body: ElementsGrid(),
+      body: ElementsView(),
     );
   }
 }
