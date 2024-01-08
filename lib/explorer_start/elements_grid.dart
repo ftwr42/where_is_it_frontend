@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../routing/routing.dart';
+
 List<Map<String, dynamic>> elements = [
   {
     'image': AssetImage('assets/images/237-536x354.jpg'),
@@ -54,29 +56,35 @@ class ElementsGrid extends StatelessWidget {
         SliverChildBuilderDelegate((BuildContext context, int index) {
       var element = elements[index];
 
-      return Container(
-        color: element['color'],
-        width: 50,
-        height: 50,
-        child: Center(
-            child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Expanded(
-            child: GestureDetector(
-              onTap: () {},
-              child: Hero(
-                tag: "dr",
-                child: Container(
-                    color: Colors.white,
-                    child: Image(
-                      image: element['image'],
-                    )
-                    // child: Image.asset("resources/cupboard_default.png")
-                    ),
-              ),
+      return GestureDetector(
+        onLongPress: () {
+          var navigateTo = Routing.navigateTo(
+              context, Routing.ITEMVIEW, Routing.DIRECTION_TOP);
+          Navigator.push(context, navigateTo);
+        },
+        onTap: () {
+          var navigateTo = Routing.navigateTo(
+              context, Routing.EXPLORER_NEXT, Routing.DIRECTION_RIGHT);
+          Navigator.push(context, navigateTo);
+        },
+        child: Container(
+          color: element['color'],
+          width: 50,
+          height: 50,
+          child: Center(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Expanded(
+              child: Container(
+                  color: Colors.white,
+                  child: Image(
+                    image: element['image'],
+                  )
+                  // child: Image.asset("resources/cupboard_default.png")
+                  ),
             ),
-          ),
-        )),
+          )),
+        ),
       );
     }, childCount: elements.length);
 

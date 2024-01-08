@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/navigation/routing.dart';
+import 'package:where_is_it/routing/routing.dart';
 import 'package:where_is_it/startview/start_view.dart';
 
 void main() {

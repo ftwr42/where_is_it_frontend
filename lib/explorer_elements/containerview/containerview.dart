@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ItemView extends StatelessWidget {
-  const ItemView({super.key});
+import '../../assets/styles/text.dart';
+
+class ContainerView extends StatelessWidget {
+  const ContainerView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
+          itemHeader(),
           itemImage(),
           itemProperties(),
           itemDescription(),
@@ -16,6 +19,16 @@ class ItemView extends StatelessWidget {
       ),
     );
   }
+
+  Widget itemHeader() => SizedBox(
+        height: 80,
+        child: Center(
+          child: Text(
+            "Container View",
+            style: WiiTextStyles.header1Style(),
+          ),
+        ),
+      );
 
   Widget itemControls() => Container(
         child: Padding(
@@ -98,18 +111,6 @@ class ItemView extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // SizedBox(width: 16.0),
-              //
-              // // Eingabefeld (Input Field)
-              // Expanded(
-              //   child: TextField(
-              //     decoration: InputDecoration(
-              //       labelText: label,
-              //       border: OutlineInputBorder(),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

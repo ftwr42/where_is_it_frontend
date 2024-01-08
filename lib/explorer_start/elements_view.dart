@@ -7,8 +7,10 @@ class ElementsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return const CustomScrollView(
       slivers: [
+        //SliverList.separated(itemBuilder: itemBuilder, separatorBuilder: separatorBuilder)
+        //SliverToBoxAdapter(child: HistoryNavigator(),),
         ElementsGrid(),
       ],
     );

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/navigation/routing.dart';
+import 'package:where_is_it/assets/styles/text.dart';
+
+import '../routing/routing.dart';
 
 class WiiDrawer extends StatefulWidget {
   final List credentialList = [
     {
       'text': "Jan Freirich",
-      'style': const TextStyle(fontSize: 22, color: Colors.white60)
     },
     {
       'text': "JanFreirich@gmail.com",
-      'style': const TextStyle(fontSize: 16, color: Colors.white60)
     },
   ];
 
@@ -38,6 +38,11 @@ class WiiDrawer extends StatefulWidget {
       'leading': Icon(Icons.add_circle_outline),
       'title': "Example Transition",
       'route': Routing.EXAMPLETRANSITION
+    },
+    {
+      'leading': Icon(Icons.exit_to_app_rounded),
+      'title': "Example",
+      'route': Routing.CURRENTEXAMPLE
     },
   ];
 
@@ -96,8 +101,10 @@ class _WiiDrawerState extends State<WiiDrawer> {
             backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
             radius: 50,
           ),
-          credentialText(widget.credentialList[0]),
-          credentialText(widget.credentialList[1]),
+          credentialText(
+              widget.credentialList[0], WiiTextStyles.credentials_name_style()),
+          credentialText(widget.credentialList[1],
+              WiiTextStyles.credentials_email_style()),
         ],
       ),
     );
@@ -114,6 +121,7 @@ class _WiiDrawerState extends State<WiiDrawer> {
           drawerItem(widget.menuList[2]),
           drawerItem(widget.menuList[3]),
           drawerItem(widget.menuList[4]),
+          drawerItem(widget.menuList[5]),
           Divider(),
           drawerItem(widget.shopList[0]),
           drawerItem(widget.shopList[1]),
@@ -134,8 +142,8 @@ class _WiiDrawerState extends State<WiiDrawer> {
         },
       );
 
-  Widget credentialText(Map<String, dynamic> item) => Text(
+  Widget credentialText(Map<String, dynamic> item, TextStyle textStyle) => Text(
         item['text'],
-        style: item['style'],
+        style: textStyle,
       );
 }
