@@ -17,7 +17,7 @@ class WiiDrawer extends StatefulWidget {
     {
       'leading': Icon(Icons.home),
       'title': "Start View",
-      'route': Routing.STARTVIEW
+      'route': Routing.EXPLORERVIEW
     },
     {
       'leading': Icon(Icons.add_circle_outline),
@@ -61,7 +61,11 @@ class WiiDrawer extends StatefulWidget {
   ];
 
   final List settingsList = [
-    {'leading': Icon(Icons.login), 'title': "Login", 'route': Routing.ITEMVIEW},
+    {
+      'leading': Icon(Icons.login),
+      'title': "Login",
+      'route': Routing.LOGINVIEW
+    },
     {
       'leading': Icon(Icons.settings),
       'title': "Settings",

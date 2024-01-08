@@ -29,7 +29,6 @@ class ContainerView extends StatelessWidget {
           ),
         ),
       );
-
   Widget itemControls() => Container(
         child: Padding(
           padding: EdgeInsets.all(16.0),

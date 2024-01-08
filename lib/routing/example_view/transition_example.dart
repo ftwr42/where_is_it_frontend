@@ -55,7 +55,7 @@ class TransitionExample extends StatelessWidget {
             child: ElevatedButton(
                 onPressed: () {
                   var navigateTo = Routing.navigateTo(
-                      context, Routing.STARTVIEW, Routing.DIRECTION_LEFT);
+                      context, Routing.EXPLORERVIEW, Routing.DIRECTION_LEFT);
                   Navigator.of(context).push(navigateTo);
                 },
                 child: Text("BACK")),

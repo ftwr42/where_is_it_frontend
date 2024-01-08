@@ -1,41 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:where_is_it/explorer/explorer_view.dart';
 import 'package:where_is_it/loginview/login_view.dart';
-import 'package:where_is_it/startview/start_view.dart';
 
+import '../elements/containerview/containerview.dart';
+import '../elements/itemview/itemview.dart';
 import '../example/current_example.dart';
-import '../explorer_elements/containerview/containerview.dart';
-import '../explorer_elements/itemview/itemview.dart';
-import 'transition/transition_example.dart';
+import 'example_view/transition_example.dart';
 
 class Routing {
   static const String USERVIEW = "userview";
   static const String ITEMVIEW = "itemview";
   static const String CONTAINERVIEW = "containerview";
-  static const String STARTVIEW = "startview";
+  static const String EXPLORERVIEW = "startview";
   static const String LOGINVIEW = "loginview";
   static const String EXAMPLETRANSITION = "exampletransition";
   static const String CURRENTEXAMPLE = "currentexample";
   static const String CURRENTEXAMPLE2 = "currentexample2";
-  static const String EXPLORER_NEXT = "explorer_next";
-  static const String EXPLORER = "explorer_next";
 
   static const String DIRECTION_NONE = "none";
   static const String DIRECTION_TOP = "direction_top";
   static const String DIRECTION_BOT = "direction_bot";
   static const String DIRECTION_LEFT = "direction_left";
   static const String DIRECTION_RIGHT = "direction_right";
+  static const String DIRECTION_ZOOMBIG = "direction_zoom_big";
 
   static Map<String, WidgetBuilder> routes(BuildContext context) {
     return <String, WidgetBuilder>{
-      STARTVIEW: (context) => const StartView(),
+      EXPLORERVIEW: (context) => const ExplorerView(),
       ITEMVIEW: (context) => const ItemView(),
       CONTAINERVIEW: (context) => const ContainerView(),
       LOGINVIEW: (context) => const LoginView(),
       EXAMPLETRANSITION: (context) => const TransitionExample(),
       CURRENTEXAMPLE: (context) => FirstScreen(),
       CURRENTEXAMPLE2: (context) => SecondScreen(),
-      EXPLORER: (context) => SecondScreen(),
-      EXPLORER_NEXT: (context) => SecondScreen(),
     };
   }
 
@@ -127,6 +124,7 @@ class Routing {
           };
         }
         break;
+
       case DIRECTION_NONE:
       default:
         {

@@ -3,10 +3,10 @@ import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer.dart';
 import 'package:where_is_it/fab/fab.dart';
 
-import '../explorer_start/elements_view.dart';
+import 'explorer_grid.dart';
 
-class StartView extends StatelessWidget {
-  const StartView({super.key});
+class ExplorerView extends StatelessWidget {
+  const ExplorerView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,11 @@ class StartView extends StatelessWidget {
       appBar: WiiAppBar.getBar(),
       drawer: WiiDrawer(),
       floatingActionButton: const WiiFab(),
-      body: ElementsView(),
+      body: CustomScrollView(
+        slivers: [
+          ExplorerGrid(),
+        ],
+      ),
     );
   }
 }
