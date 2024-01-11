@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'elemtviews/fab_element_widget.dart';
+
 class WiiFab extends StatelessWidget {
   static const _actionTitles = ['Create a Item', 'Create a Container'];
 
@@ -12,11 +14,12 @@ class WiiFab extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: SizedBox(
-            width: 300,
-            height: 500,
-          ), //Text(_actionTitles[index]),
+          content: FabElementView(context), //Text(_actionTitles[index]),
           actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('SAFE'),
+            ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
               child: const Text('CLOSE'),
