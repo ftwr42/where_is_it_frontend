@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:where_is_it/explorer/explorer_view.dart';
 import 'package:where_is_it/loginview/login_view.dart';
 
-import '../elements/containerview/containerview.dart';
-import '../elements/itemview/itemview.dart';
 import '../example/current_example.dart';
+import '../explorer/elements/containerview/containerview.dart';
+import '../explorer/elements/itemview/itemview.dart';
 import 'example_view/transition_example.dart';
 
 class Routing {

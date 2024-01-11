@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../assets/styles/text.dart';
+import '../../../assets/styles/text.dart';
 
 class ContainerView extends StatelessWidget {
   const ContainerView({super.key});

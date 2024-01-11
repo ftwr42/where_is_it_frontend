@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class WiiFab extends StatelessWidget {
-  static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
+  static const _actionTitles = ['Create a Item', 'Create a Container'];
 
   const WiiFab({super.key});
 
@@ -12,7 +12,10 @@ class WiiFab extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Text(_actionTitles[index]),
+          content: SizedBox(
+            width: 300,
+            height: 500,
+          ), //Text(_actionTitles[index]),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -30,16 +33,12 @@ class WiiFab extends StatelessWidget {
       distance: 112,
       children: [
         ElevatedButton(
-          child: const Icon(Icons.format_size),
+          child: const Icon(Icons.pan_tool),
           onPressed: () => _showAction(context, 0),
         ),
         ElevatedButton(
-          child: const Icon(Icons.insert_photo),
+          child: const Icon(Icons.add_box),
           onPressed: () => _showAction(context, 1),
-        ),
-        ElevatedButton(
-          child: const Icon(Icons.videocam),
-          onPressed: () => _showAction(context, 2),
         ),
       ],
     );

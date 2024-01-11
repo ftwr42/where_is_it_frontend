@@ -38,6 +38,9 @@ dependencies:
   app_bar_with_search_switch: ^1.7.0
   hive: ^2.2.3
   flutter_expandable_fab: ^2.0.0
+  camera: ^0.10.5+9
+  path_provider: ^2.1.2
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:

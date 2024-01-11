@@ -59,8 +59,15 @@ class ExplorerGrid extends StatelessWidget {
 
       return GestureDetector(
         onLongPress: () {
-          var navigateTo = Routing.navigateTo(
-              context, Routing.ITEMVIEW, Routing.DIRECTION_TOP);
+          var navigateTo;
+          if (element['type'] != 'container') {
+            navigateTo = Routing.navigateTo(
+                context, Routing.ITEMVIEW, Routing.DIRECTION_TOP);
+          } else {
+            navigateTo = Routing.navigateTo(
+                context, Routing.CONTAINERVIEW, Routing.DIRECTION_TOP);
+          }
+
           Navigator.push(context, navigateTo);
         },
         onTap: () {
@@ -71,6 +78,7 @@ class ExplorerGrid extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              color: Colors.amberAccent,
               child: Center(
                   child: (element['type'] == 'container'
                       ? Text(
@@ -84,16 +92,18 @@ class ExplorerGrid extends StatelessWidget {
             ),
             Container(
               color: element['color'],
-              width: 50,
-              height: 50,
+              // width: 50,
+              // height: 50,
               child: Center(
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Expanded(
                   child: Container(
                       color: Colors.white,
-                      child: Image(
-                        image: element['image'],
+                      child: Expanded(
+                        child: Image(
+                          image: element['image'],
+                        ),
                       )
                       // child: Image.asset("resources/cupboard_default.png")
                       ),
