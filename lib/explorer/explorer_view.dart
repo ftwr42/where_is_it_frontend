@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer_view.dart';
-import 'package:where_is_it/fab/fab.dart';
+import 'package:where_is_it/fab/fab_view.dart';
 
 import 'explorer_grid.dart';
 
@@ -13,7 +13,7 @@ class ExplorerView extends StatelessWidget {
     return Scaffold(
       appBar: WiiAppBar.getBar(),
       drawer: DrawerView(),
-      floatingActionButton: const WiiFab(),
+      floatingActionButton: const FabView(),
       body: CustomScrollView(
         slivers: [
           ExplorerGrid(),

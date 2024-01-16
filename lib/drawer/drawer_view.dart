@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/assets/styles/text.dart';
 
+import 'drawer_config.dart';
 import 'drawer_controller.dart';
-import 'drawer_model.dart';
 
 class DrawerView extends StatefulWidget {
   const DrawerView({super.key});
@@ -37,9 +37,9 @@ class _DrawerViewState extends State<DrawerView> {
             backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
             radius: 50,
           ),
-          credentialText(DrawerModel.credentialList[0],
+          credentialText(DrawerConfig.credentialList[0],
               WiiTextStyles.credentials_name_style()),
-          credentialText(DrawerModel.credentialList[1],
+          credentialText(DrawerConfig.credentialList[1],
               WiiTextStyles.credentials_email_style()),
         ],
       ),
@@ -53,16 +53,16 @@ class _DrawerViewState extends State<DrawerView> {
         runSpacing: 16,
         children: [
           Column(
-            children: DrawerModel.menuList.map((e) => drawerItem(e)).toList(),
+            children: DrawerConfig.menuList.map((e) => drawerItem(e)).toList(),
           ),
           Divider(),
           Column(
-            children: DrawerModel.shopList.map((e) => drawerItem(e)).toList(),
+            children: DrawerConfig.shopList.map((e) => drawerItem(e)).toList(),
           ),
           Divider(),
           Column(
             children:
-                DrawerModel.settingsList.map((e) => drawerItem(e)).toList(),
+                DrawerConfig.settingsList.map((e) => drawerItem(e)).toList(),
           ),
         ],
       ),
