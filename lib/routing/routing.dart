@@ -124,6 +124,26 @@ class Routing {
           };
         }
         break;
+      case DIRECTION_ZOOMBIG:
+        {
+          transition = (context, animation, secondaryAnimation, child) {
+            const begin = 0.0;
+            const end = 1.0;
+            const curve = Curves.easeInOutBack;
+
+            final tween = Tween(begin: begin, end: end);
+            final curvedAnimation = CurvedAnimation(
+              parent: animation,
+              curve: curve,
+            );
+
+            return ScaleTransition(
+              scale: tween.animate(curvedAnimation),
+              child: child,
+            );
+          };
+        }
+        break;
 
       case DIRECTION_NONE:
       default:

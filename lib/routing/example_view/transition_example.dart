@@ -60,6 +60,20 @@ class TransitionExample extends StatelessWidget {
                 },
                 child: Text("BACK")),
           ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: ElevatedButton(
+              onPressed: () {
+                var navigateTo = Routing.navigateTo(
+                  context,
+                  Routing.EXAMPLETRANSITION,
+                  Routing.DIRECTION_ZOOMBIG, // Use the new animation type
+                );
+                Navigator.of(context).push(navigateTo);
+              },
+              child: Text("ZOOM BIG"),
+            ),
+          ),
         ],
       ),
     );
