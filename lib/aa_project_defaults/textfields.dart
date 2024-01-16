@@ -1,6 +1,37 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProjectTextFields {
+  static Widget imageUpload(String string) {
+    File? _image;
+
+    Future getImage() async {
+      final pickedFile =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print(string);
+      }
+    }
+
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _image == null ? Text(string) : Image.file(_image!),
+          ElevatedButton(
+            onPressed: getImage,
+            child: Text('PHOTOS'),
+          ),
+        ],
+      ),
+    );
+  }
+
   static Widget textField(String name) {
     bool checkText = true;
     // Todo check name, if fail, return null
