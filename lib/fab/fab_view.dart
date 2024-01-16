@@ -1,49 +1,16 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-
-import 'elemtviews/fab_element_widget.dart';
+import 'package:where_is_it/fab/fab_config.dart';
 
 class FabView extends StatelessWidget {
-  static const _actionTitles = ['Create a Item', 'Create a Container'];
-
   const FabView({super.key});
-
-  void _showAction(BuildContext context, int index) {
-    showDialog<void>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: FabElementView(context), //Text(_actionTitles[index]),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('SAFE'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('CLOSE'),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return ExpandableFab(
-      distance: 112,
-      children: [
-        ElevatedButton(
-          child: const Icon(Icons.pan_tool),
-          onPressed: () => _showAction(context, 0),
-        ),
-        ElevatedButton(
-          child: const Icon(Icons.add_box),
-          onPressed: () => _showAction(context, 1),
-        ),
-      ],
+      distance: 80,
+      children: FabConfig.buttons(context),
     );
   }
 }
