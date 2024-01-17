@@ -12,10 +12,6 @@ class _WiiSearchState extends State<WiiSearch> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = ThemeData(
-        useMaterial3: true,
-        brightness: isDark ? Brightness.dark : Brightness.light);
-
     return SearchAnchor(
       builder: (BuildContext context, SearchController controller) {
         return SearchBar(
