@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../aa_project_defaults/textfields.dart';
 import '../../camera/camera_stream_widget.dart';
+import 'dialog_config.dart';
 
 class DialogView extends StatelessWidget {
   const DialogView(BuildContext context, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    var dialogConfig = DialogConfig(context: context);
+
     return AlertDialog(
       content: Column(
         children: [
@@ -16,28 +19,10 @@ class DialogView extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          propertiesInput('Name'),
-          propertiesInput('#tag'),
+          dialogConfig.properties(),
         ],
       ),
-      actions: actions(context),
+      actions: dialogConfig.actions(),
     );
-  }
-
-  Widget propertiesInput(String key) => Container(
-        child: ProjectTextFields.nameField(key),
-      );
-
-  List<Widget> actions(BuildContext context) {
-    return <Widget>[
-      TextButton(
-        onPressed: () => Navigator.of(context).pop(),
-        child: const Text('SAFE'),
-      ),
-      TextButton(
-        onPressed: () => Navigator.of(context).pop(),
-        child: const Text('CLOSE'),
-      ),
-    ];
   }
 }

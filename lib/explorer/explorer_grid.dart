@@ -40,6 +40,108 @@ List<Map<String, dynamic>> elements = [
     'name': 'Hund',
     'color': Colors.amberAccent
   },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
+  {
+    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'type': 'container',
+    'name': 'Hund',
+    'color': Colors.amberAccent
+  },
 ];
 
 class ExplorerGrid extends StatelessWidget {

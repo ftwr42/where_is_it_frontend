@@ -16,6 +16,31 @@ class ExplorerView extends StatelessWidget {
       floatingActionButton: const FabView(),
       body: CustomScrollView(
         slivers: [
+          SliverAppBar(
+            iconTheme: null,
+            primary: false,
+            excludeHeaderSemantics: true,
+            collapsedHeight: 70,
+            floating: true,
+            toolbarHeight: 0,
+            expandedHeight: 50,
+            flexibleSpace: Container(
+              color: Color(0x00),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Search',
+                    hintText: 'Enter search term',
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
           ExplorerGrid(),
         ],
       ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [SearchBar].
-
 class WiiSearch extends StatefulWidget {
   const WiiSearch({super.key});
 
