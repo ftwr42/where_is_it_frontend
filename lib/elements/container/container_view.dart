@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/assets/styles/text.dart';
+import 'package:where_is_it/aa_assets/styles/text.dart';
 
-class ItemView extends StatelessWidget {
-  const ItemView({super.key});
+class ContainerView extends StatelessWidget {
+  const ContainerView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        color: Colors.lightBlueAccent,
-        child: Column(
-          children: [
-            itemHeader(),
-            itemImage(),
-            itemProperties(),
-            itemDescription(),
-            itemControls(),
-          ],
-        ),
+      body: Column(
+        children: [
+          itemHeader(),
+          itemImage(),
+          itemProperties(),
+          itemDescription(),
+          itemControls(),
+        ],
       ),
     );
   }
@@ -27,12 +24,11 @@ class ItemView extends StatelessWidget {
         height: 80,
         child: Center(
           child: Text(
-            "Item View",
+            "Container View",
             style: WiiTextStyles.header1Style(),
           ),
         ),
       );
-
   Widget itemControls() => Container(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -114,18 +110,6 @@ class ItemView extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // SizedBox(width: 16.0),
-              //
-              // // Eingabefeld (Input Field)
-              // Expanded(
-              //   child: TextField(
-              //     decoration: InputDecoration(
-              //       labelText: label,
-              //       border: OutlineInputBorder(),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

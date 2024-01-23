@@ -1,49 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer_view.dart';
+import 'package:where_is_it/explorer/grid_item_view/grid_item_view.dart';
 import 'package:where_is_it/fab/fab_view.dart';
+import 'package:where_is_it/routing/routing.dart';
+import 'package:where_is_it/searchbar/searchbar_view.dart';
 
-import 'explorer_grid.dart';
+import 'explorer_model.dart';
+import 'grid_container/grid_container_view.dart';
 
 class ExplorerView extends StatelessWidget {
   const ExplorerView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> elements = ExplorerModel.items;
+
     return Scaffold(
       appBar: WiiAppBar.getBar(),
       drawer: DrawerView(),
       floatingActionButton: const FabView(),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            iconTheme: null,
-            primary: false,
-            excludeHeaderSemantics: true,
-            collapsedHeight: 70,
-            floating: true,
-            toolbarHeight: 0,
-            expandedHeight: 50,
-            flexibleSpace: Container(
-              color: Color(0x00),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Search',
-                    hintText: 'Enter search term',
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    ),
-                  ),
-                ),
-              ),
+          SearchBarView(elements),
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                var element = elements[index];
+
+                return GestureDetector(
+                    onLongPress: () {
+                      var navigateTo;
+                      if (element['type'] == 'container') {
+                        navigateTo = Routing.navigateTo(context,
+                            Routing.CONTAINERVIEW, Routing.DIRECTION_TOP);
+                      } else {
+                        navigateTo = Routing.navigateTo(
+                            context, Routing.ITEMVIEW, Routing.DIRECTION_TOP);
+                      }
+
+                      Navigator.push(context, navigateTo);
+                    },
+                    onTap: () {
+                      var navigateTo = Routing.navigateTo(context,
+                          Routing.EXPLORERVIEW, Routing.DIRECTION_RIGHT);
+                      Navigator.push(context, navigateTo);
+                    },
+                    child: elementWidgetType(elements, index));
+              },
+              childCount: elements.length,
             ),
+            gridDelegate: elementGridDelegate(2),
           ),
-          ExplorerGrid(),
         ],
       ),
     );
   }
+
+  StatefulWidget elementWidgetType(
+      List<Map<String, dynamic>> elements, int index) {
+    if (elements[index]['type'] == 'container') {
+      return GridContainerView(elements[index]);
+    } else {
+      return GridItemView(elements[index]);
+    }
+  }
+
+  SliverGridDelegateWithFixedCrossAxisCount elementGridDelegate(
+          int crossAxisCount) =>
+      SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: 3.0, // Horizontaler Abstand zwischen den Elementen
+        mainAxisSpacing: 3.0, // Vertikaler Abstand zwischen den Elementen
+        // childAspectRatio: 1.0, // Verhältnis von Breite zu Höhe
+      );
 }

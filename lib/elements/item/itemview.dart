@@ -1,21 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:where_is_it/aa_project_defaults/textfields.dart';
 
-import '../../../assets/styles/text.dart';
+import '../../aa_assets/styles/text.dart';
 
-class ContainerView extends StatelessWidget {
-  const ContainerView({super.key});
+class ItemView extends StatelessWidget {
+  const ItemView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          itemHeader(),
-          itemImage(),
-          itemProperties(),
-          itemDescription(),
-          itemControls(),
-        ],
+      appBar: AppBar(),
+      body: Container(
+        child: Column(
+          children: [
+            SafeArea(
+                left: false,
+                top: true,
+                right: false,
+                child: Container(
+                  color: Colors.lightGreen,
+                )),
+            itemHeader(),
+            itemImage(),
+            Padding(
+              padding: EdgeInsets.only(left: 5, right: 5),
+              child: ProjectTextFields.nameField("name"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+                padding: EdgeInsets.only(left: 5, right: 5),
+                child: ProjectTextFields.nameField("tag")),
+            // itemProperties(),
+            // itemDescription(),
+            itemControls(),
+          ],
+        ),
       ),
     );
   }
@@ -24,11 +45,12 @@ class ContainerView extends StatelessWidget {
         height: 80,
         child: Center(
           child: Text(
-            "Container View",
+            "Item View",
             style: WiiTextStyles.header1Style(),
           ),
         ),
       );
+
   Widget itemControls() => Container(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -110,6 +132,18 @@ class ContainerView extends StatelessWidget {
                   ),
                 ),
               ),
+
+              // SizedBox(width: 16.0),
+              //
+              // // Eingabefeld (Input Field)
+              // Expanded(
+              //   child: TextField(
+              //     decoration: InputDecoration(
+              //       labelText: label,
+              //       border: OutlineInputBorder(),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

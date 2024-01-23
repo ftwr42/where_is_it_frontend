@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/assets/styles/text.dart';
+import 'package:where_is_it/aa_assets/styles/text.dart';
 
 import 'drawer_config.dart';
-import 'drawer_controller.dart';
 
 class DrawerView extends StatefulWidget {
   const DrawerView({super.key});
@@ -72,9 +71,7 @@ class _DrawerViewState extends State<DrawerView> {
   Widget drawerItem(Map<String, dynamic> item) => ListTile(
         leading: item['leading'],
         title: Text(item['title']),
-        onTap: () {
-          WiiDrawerController.pushNamed(context, item['route']);
-        },
+        onTap: () {},
       );
 
   Widget credentialText(Map<String, dynamic> item, TextStyle textStyle) => Text(

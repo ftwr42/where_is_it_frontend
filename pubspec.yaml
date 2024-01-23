@@ -44,6 +44,7 @@ dependencies:
   path: ^1.8.3
   url_launcher:
   image_picker: ^0.8.5+3
+  get:
 
 dev_dependencies:
   flutter_test:
