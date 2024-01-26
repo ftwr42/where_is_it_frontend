@@ -2,34 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 
 import '../../aa_project_defaults/textfields.dart';
-import 'dialog_config.dart';
 
 class FastContainerCreator extends StatelessWidget {
   const FastContainerCreator(BuildContext context, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    var dialogConfig = DialogConfig(context: context);
-
     return AlertDialog(
-      content: Column(
-        children: [
-          title(),
-          // const CameraStreamWidget(),
-          ProjectTextFields.imageUpload("No image chosen yet"),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(
-            children: [
-              _propertiesInput('Location'),
-              SizedBox(
-                height: 10,
-              ),
-              _propertiesInput('Title'),
-            ],
-          ),
-        ],
+      content: Container(
+        width: 350,
+        height: 500,
+        child: Column(
+          children: [
+            title(),
+            const SizedBox(
+              height: 10,
+            ),
+            // const CameraStreamWidget(),
+            const SizedBox(
+              height: 10,
+            ),
+            ProjectTextFields.imageUpload("No image chosen yet"),
+            const SizedBox(
+              height: 10,
+            ),
+            Column(
+              children: [
+                _propertiesInput('Location'),
+                SizedBox(
+                  height: 10,
+                ),
+                _propertiesInput('Title'),
+              ],
+            ),
+          ],
+        ),
       ),
       actions: <Widget>[
         TextButton(

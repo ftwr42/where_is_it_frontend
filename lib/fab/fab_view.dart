@@ -1,16 +1,17 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:where_is_it/fab/fab_config.dart';
+
+import 'dialog/fast_container_creator.dart';
+import 'dialog/fast_item_creator.dart';
 
 class FabView extends StatelessWidget {
   const FabView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ExpandableFab(
+    return const ExpandableFab(
       distance: 80,
-      children: FabConfig.buttons(context),
     );
   }
 }
@@ -20,12 +21,10 @@ class ExpandableFab extends StatefulWidget {
     super.key,
     this.initialOpen,
     required this.distance,
-    required this.children,
   });
 
   final bool? initialOpen;
   final double distance;
-  final List<Widget> children;
 
   @override
   State<ExpandableFab> createState() => _ExpandableFabState();
@@ -87,8 +86,8 @@ class _ExpandableFabState extends State<ExpandableFab>
 
   Widget _buildTapToCloseFab() {
     return SizedBox(
-      width: 56,
-      height: 56,
+      width: 57,
+      height: 57,
       child: Center(
         child: Material(
           shape: const CircleBorder(),
@@ -111,17 +110,30 @@ class _ExpandableFabState extends State<ExpandableFab>
 
   List<Widget> _buildExpandingActionButtons() {
     final children = <Widget>[];
-    final count = widget.children.length;
+    const count = 2;
     final step = 90.0 / (count - 1);
     for (var i = 0, angleInDegrees = 0.0;
         i < count;
         i++, angleInDegrees += step) {
       children.add(
         _ExpandingActionButton(
-          directionInDegrees: angleInDegrees,
-          maxDistance: widget.distance,
+          directionInDegrees: 90, //todo changed angle in degress here to 90
+          maxDistance: (i == 0) ? 90 : 180, //widget.distance, todo here too
           progress: _expandAnimation,
-          child: widget.children[i],
+          // child: widget.children[i],
+          child: ElevatedButton(
+              onPressed: () {
+                _toggle();
+                showDialog<void>(
+                  context: context,
+                  builder: (context) {
+                    return (i == 0)
+                        ? FastItemCreator(context)
+                        : FastContainerCreator(context);
+                  },
+                );
+              },
+              child: (i == 0) ? Icon(Icons.add) : Icon(Icons.add_box)),
         ),
       );
     }
