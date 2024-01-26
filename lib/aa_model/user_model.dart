@@ -10,6 +10,7 @@ class UserModel extends GetxController {
   String lastname = "Mueller";
   String email = "toast53@wii.com";
   String description = "Creative Software Developer";
+  String privateKey = "sdfsdfsdfasakbfdhjsbafgdisabgiosnbgti";
   int age = 23;
 
   Digest getKey() {

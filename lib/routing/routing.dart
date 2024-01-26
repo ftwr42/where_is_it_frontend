@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/explorer/explorer_view.dart';
 import 'package:where_is_it/loginview/login_view.dart';
+import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
 
 import '../elements/container/container_view.dart';
 import '../elements/item/itemview.dart';
@@ -16,6 +17,7 @@ class Routing {
   static const String EXAMPLETRANSITION = "exampletransition";
   static const String CURRENTEXAMPLE = "currentexample";
   static const String CURRENTEXAMPLE2 = "currentexample2";
+  static const String NETWORKEXAMPLE = "networkexample";
 
   static const String DIRECTION_NONE = "none";
   static const String DIRECTION_TOP = "direction_top";
@@ -33,6 +35,7 @@ class Routing {
       EXAMPLETRANSITION: (context) => const TransitionExample(),
       CURRENTEXAMPLE: (context) => FirstScreen(),
       CURRENTEXAMPLE2: (context) => SecondScreen(),
+      NETWORKEXAMPLE: (context) => const NetworkExampleScreen(),
     };
   }
 

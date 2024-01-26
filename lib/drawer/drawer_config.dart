@@ -43,6 +43,11 @@ class DrawerConfig {
       'title': "Example",
       'route': Routing.CURRENTEXAMPLE
     },
+    {
+      'leading': Icon(Icons.network_wifi_2_bar_outlined),
+      'title': "Network Examples",
+      'route': Routing.NETWORKEXAMPLE
+    },
   ];
 
   static final List shopList = [

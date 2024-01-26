@@ -66,6 +66,13 @@ class ProjectTextFields {
     );
   }
 
+  static Widget descriptionField(String name) {
+    return TextField(
+      // controller: widget.controller.passwordField,
+      decoration: _inputDecorationForLogin(name, name, Icons.text_fields),
+    );
+  }
+
   static Widget passwordField() {
     return TextField(
       // controller: widget.controller.usernameField,

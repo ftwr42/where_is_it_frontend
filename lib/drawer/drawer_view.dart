@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 
+import '../routing/routing.dart';
 import 'drawer_config.dart';
 
 class DrawerView extends StatefulWidget {
@@ -71,7 +72,11 @@ class _DrawerViewState extends State<DrawerView> {
   Widget drawerItem(Map<String, dynamic> item) => ListTile(
         leading: item['leading'],
         title: Text(item['title']),
-        onTap: () {},
+        onTap: () {
+          var navigateTo = Routing.navigateTo(
+              context, Routing.NETWORKEXAMPLE, Routing.DIRECTION_LEFT);
+          Navigator.push(context, navigateTo);
+        },
       );
 
   Widget credentialText(Map<String, dynamic> item, TextStyle textStyle) => Text(

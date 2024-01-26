@@ -46,6 +46,7 @@ dependencies:
   image_picker: ^0.8.5+3
   get:
   crypto:
+  http:
 
 dev_dependencies:
   flutter_test:
