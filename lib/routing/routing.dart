@@ -6,6 +6,7 @@ import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
 import '../elements/container/container_view.dart';
 import '../elements/item/itemview.dart';
 import '../example/current_example.dart';
+import '../fab/dialog/fast_item_creator.dart';
 import 'example_view/transition_example.dart';
 
 class Routing {
@@ -26,6 +27,10 @@ class Routing {
   static const String DIRECTION_RIGHT = "direction_right";
   static const String DIRECTION_ZOOMBIG = "direction_zoom_big";
 
+  static const String FABDIALOG1 = "dialog1";
+  static const String FABDIALOG2 = "dialog2";
+  static const String FABDIALOG3 = "dialog3";
+
   static Map<String, WidgetBuilder> routes(BuildContext context) {
     return <String, WidgetBuilder>{
       EXPLORERVIEW: (context) => const ExplorerView(),
@@ -36,6 +41,9 @@ class Routing {
       CURRENTEXAMPLE: (context) => FirstScreen(),
       CURRENTEXAMPLE2: (context) => SecondScreen(),
       NETWORKEXAMPLE: (context) => const NetworkExampleScreen(),
+      FABDIALOG1: (context) => FastItemCreator(context),
+      FABDIALOG2: (context) => FastItemCreator(context),
+      FABDIALOG3: (context) => FastItemCreator(context),
     };
   }
 
