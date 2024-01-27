@@ -3,18 +3,18 @@ import 'package:where_is_it/aa_assets/styles/text.dart';
 import 'package:where_is_it/drawer/drawer_state.dart';
 import 'package:where_is_it/profile/profile_state.dart';
 import 'package:where_is_it/singleton.dart';
+import 'package:where_is_it/store/store_state.dart';
 import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 import '../routing/routing.dart';
-import 'drawer_config.dart';
 
 class DrawerView extends StatefulWidget {
   DrawerView({super.key}) {
     Singleton.getInstance();
     var root = Singleton.root;
     root?.addChild(StateHolder<DrawerState>(DrawerState(), nodeName: 'drawer'));
-    root?.addChild(
-        StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
+    root?.addChild(StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
+    root?.addChild(StateHolder<StoreState>(StoreState(), nodeName: 'store'));
   }
 
   @override
@@ -22,6 +22,37 @@ class DrawerView extends StatefulWidget {
 }
 
 class _DrawerViewState extends State<DrawerView> {
+  static final List<Map<String, dynamic>> menuList = [
+    {'leading': Icon(Icons.home), 'title': "Start View", 'route': Routing.EXPLORERVIEW},
+    {'leading': Icon(Icons.add_circle_outline), 'title': "Item View", 'route': Routing.ITEMVIEW},
+    {
+      'leading': Icon(Icons.add_circle_outline),
+      'title': "Container View",
+      'route': Routing.CONTAINERVIEW
+    },
+    {'leading': Icon(Icons.add_circle_outline), 'title': "Login View", 'route': Routing.LOGINVIEW},
+    {
+      'leading': Icon(Icons.add_circle_outline),
+      'title': "Example Transition",
+      'route': Routing.EXAMPLETRANSITION
+    },
+    {
+      'leading': Icon(Icons.exit_to_app_rounded),
+      'title': "Example",
+      'route': Routing.CURRENTEXAMPLE
+    },
+    {
+      'leading': Icon(Icons.network_wifi_2_bar_outlined),
+      'title': "Network Examples",
+      'route': Routing.NETWORKEXAMPLE
+    },
+  ];
+
+  static final List settingsList = [
+    {'leading': Icon(Icons.login), 'title': "Login", 'route': Routing.LOGINVIEW},
+    {'leading': Icon(Icons.settings), 'title': "Settings", 'route': Routing.ITEMVIEW},
+  ];
+
   @override
   Widget build(BuildContext context) {
     // var state = Singleton.root?.getState('drawer');
@@ -65,22 +96,23 @@ class _DrawerViewState extends State<DrawerView> {
   }
 
   Widget buildMenuItems() {
+    var state = Singleton.root?.getState('store') as StoreState;
+
     return Container(
       padding: EdgeInsets.all(16),
       child: Wrap(
         runSpacing: 16,
         children: [
           Column(
-            children: DrawerConfig.menuList.map((e) => drawerItem(e)).toList(),
+            children: menuList.map((e) => drawerItem(e)).toList(),
           ),
           Divider(),
           Column(
-            children: DrawerConfig.shopList.map((e) => drawerItem(e)).toList(),
+            children: state.stores.map((e) => drawerItem(e)).toList(),
           ),
           Divider(),
           Column(
-            children:
-                DrawerConfig.settingsList.map((e) => drawerItem(e)).toList(),
+            children: settingsList.map((e) => drawerItem(e)).toList(),
           ),
         ],
       ),
@@ -91,8 +123,8 @@ class _DrawerViewState extends State<DrawerView> {
         leading: item['leading'],
         title: Text(item['title']),
         onTap: () {
-          var navigateTo = Routing.navigateTo(
-              context, Routing.NETWORKEXAMPLE, Routing.DIRECTION_LEFT);
+          var navigateTo =
+              Routing.navigateTo(context, Routing.NETWORKEXAMPLE, Routing.DIRECTION_LEFT);
           Navigator.push(context, navigateTo);
         },
       );
