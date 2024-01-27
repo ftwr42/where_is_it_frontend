@@ -33,7 +33,7 @@ class Routing {
 
   static Map<String, WidgetBuilder> routes(BuildContext context) {
     return <String, WidgetBuilder>{
-      EXPLORERVIEW: (context) => const ExplorerView(),
+      EXPLORERVIEW: (context) => ExplorerView(),
       ITEMVIEW: (context) => const ItemView(),
       CONTAINERVIEW: (context) => const ContainerView(),
       LOGINVIEW: (context) => const LoginView(),

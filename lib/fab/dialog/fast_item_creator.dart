@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 
 import '../../aa_assets/styles/text.dart';
-import '../../aa_project_defaults/textfields.dart';
+import '../../aa_project_defaults/project_text_fields.dart';
 
 class FastItemCreator extends StatelessWidget {
   const FastItemCreator(BuildContext context, {super.key});

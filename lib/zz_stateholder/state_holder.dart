@@ -2,14 +2,17 @@ import 'package:where_is_it/zz_stateholder/stateif.dart';
 
 class StateHolder<T extends StateIF> {
   late String nodeName;
-  late String treeName = '/';
+  String treeName = "";
   late StateHolder parent;
 
   late T state;
-  late final List<StateHolder> _children = [];
+  static List<StateHolder> _children = [];
 
-  StateHolder(T stateConfig, {required this.nodeName}) {
-    stateConfig = stateConfig;
+  StateHolder(T state, {required this.nodeName}) {
+    this.state = state;
+    if (treeName == "") {
+      treeName = "/${nodeName}";
+    }
   }
 
   void addChild(StateHolder child) {

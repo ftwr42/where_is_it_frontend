@@ -1,11 +1,15 @@
+
+
 import 'package:where_is_it/wii_state.dart';
 import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 class Stateon {
-  static final Stateon _instance = Stateon._internal();
-  late StateHolder root = StateHolder(WiiState(), nodeName: '/');
+  static final Stateon _instance = Stateon._pContructor();
+  late StateHolder root = StateHolder<WiiState>(WiiState(), nodeName: 'wii');
 
-  Stateon._internal() {}
+  Stateon._pContructor();
 
-  static Stateon get inst => _instance;
+  factory Stateon() {
+    return _instance;
+  }
 }

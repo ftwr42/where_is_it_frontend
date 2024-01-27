@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/aa_project_defaults/textfields.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 
 import '../../aa_assets/styles/text.dart';
 
