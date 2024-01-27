@@ -8,6 +8,10 @@ class FastItemCreator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var textEditingControllerLocation = TextEditingController();
+    var textEditingControllerTitle = TextEditingController();
+    var textEditingControllerJson = TextEditingController();
+
     return AlertDialog(
       content: Container(
         width: 350,
@@ -28,11 +32,18 @@ class FastItemCreator extends StatelessWidget {
             ),
             Column(
               children: [
-                _propertiesInput('Location'),
+                _propertiesInput("location", textEditingControllerLocation),
                 SizedBox(
                   height: 10,
                 ),
-                _propertiesInput('Title'),
+                _propertiesInput("title", textEditingControllerTitle),
+                SizedBox(
+                  height: 10,
+                ),
+                _propertiesInput("json", textEditingControllerJson),
+                SizedBox(
+                  height: 10,
+                ),
               ],
             ),
           ],
@@ -40,8 +51,8 @@ class FastItemCreator extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('SAFE'),
+          onPressed: () => {},
+          child: const Text('SAVE'),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
@@ -51,8 +62,10 @@ class FastItemCreator extends StatelessWidget {
     );
   }
 
-  static Widget _propertiesInput(String key) => Container(
-        child: ProjectTextFields.nameField(key),
+  static Widget _propertiesInput(
+          String key, TextEditingController controller) =>
+      Container(
+        child: ProjectTextFields.textFieldCompact(key, controller),
       );
 
   Widget title() {

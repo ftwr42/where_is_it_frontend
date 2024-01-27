@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 
 import '../../aa_project_defaults/textfields.dart';
@@ -8,6 +9,15 @@ class FastContainerCreator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var textEditingControllerLocation = TextEditingController();
+    var textEditingControllerTitle = TextEditingController();
+    var textEditingControllerJson = TextEditingController();
+
+    var item = {
+      "location": textEditingControllerLocation.text,
+      "title": textEditingControllerTitle.obs
+    };
+
     return AlertDialog(
       content: Container(
         width: 350,
@@ -28,11 +38,18 @@ class FastContainerCreator extends StatelessWidget {
             ),
             Column(
               children: [
-                _propertiesInput('Location'),
+                _propertiesInput('Location', textEditingControllerLocation),
                 SizedBox(
                   height: 10,
                 ),
-                _propertiesInput('Title'),
+                _propertiesInput('Title', textEditingControllerTitle),
+                SizedBox(
+                  height: 10,
+                ),
+                _propertiesInput("json", textEditingControllerJson),
+                SizedBox(
+                  height: 10,
+                ),
               ],
             ),
           ],
@@ -40,8 +57,13 @@ class FastContainerCreator extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('SAFE'),
+          onPressed: () => {
+            textEditingControllerJson.text =
+                textEditingControllerLocation.text +
+                    textEditingControllerTitle.text
+            // Navigator.of(context).pop(),
+          },
+          child: const Text('SAVE'),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
@@ -51,8 +73,10 @@ class FastContainerCreator extends StatelessWidget {
     );
   }
 
-  static Widget _propertiesInput(String key) => Container(
-        child: ProjectTextFields.nameField(key),
+  static Widget _propertiesInput(
+          String key, TextEditingController controller) =>
+      Container(
+        child: ProjectTextFields.textFieldCompact(key, controller),
       );
 
   Widget title() {

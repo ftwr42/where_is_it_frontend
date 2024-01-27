@@ -48,8 +48,21 @@ class ProjectTextFields {
   static Widget nameField(String name) {
     bool checkname = true;
     // Todo check name, if fail, return null
-
     return TextField(
+      decoration: _inputDecorationForLogin(
+        name,
+        name,
+        Icons.abc,
+      ),
+    );
+  }
+
+  static Widget textFieldCompact(
+      String name, TextEditingController controller) {
+    bool checkname = true;
+    // Todo check name, if fail, return null
+    return TextField(
+      controller: controller,
       decoration: _inputDecorationForLogin(
         name,
         name,
