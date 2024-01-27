@@ -21,6 +21,11 @@ class StateHolder<T extends StateIF> {
     _children.add(child);
   }
 
+  void renewChild(StateHolder child) {
+    _children.remove(getStateHolder(child.nodeName));
+    addChild(child);
+  }
+
   StateIF? getState(String nodeName) {
     for (int i = 0; i < _children.length; ++i) {
       //todo handle with treeName not with nodeName, can be a feature but not unique enough
@@ -41,5 +46,15 @@ class StateHolder<T extends StateIF> {
       }
     }
     return null;
+  }
+
+  bool stateHolderExists(String nodeName) {
+    for (int i = 0; i < _children.length; ++i) {
+      var holder = _children[i];
+      if (holder.nodeName == nodeName) {
+        return true;
+      }
+    }
+    return false;
   }
 }

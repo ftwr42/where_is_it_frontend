@@ -3,10 +3,20 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
+import 'package:where_is_it/singleton.dart';
+import 'package:where_is_it/store/fab/dialog/state.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
+import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 class FastItemCreator extends StatelessWidget {
-  const FastItemCreator(BuildContext context, {super.key});
+  FastItemCreator(BuildContext context, {super.key}) {
+    Singleton.getInstance();
+    var root = Singleton.root;
+    if (!root?.stateHolderExists('fastitemcreator')) {
+      root?.addChild(
+          StateHolder<FastItemCreatorState>(FastItemCreatorState(), nodeName: 'fastitemcreator'));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

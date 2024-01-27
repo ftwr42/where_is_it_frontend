@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
+import 'package:where_is_it/store/fab/fab_view.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -14,6 +15,7 @@ class StoreScreen extends StatelessWidget {
     var store = {};
 
     return Scaffold(
+      floatingActionButton: FabView(),
       appBar: AppBar(),
       body: Container(
           child: Column(
