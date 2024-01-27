@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer_view.dart';
-import 'package:where_is_it/explorer/grid_item_view/grid_item_view.dart';
 import 'package:where_is_it/fab/fab_view.dart';
 import 'package:where_is_it/profile/profile_state.dart';
 import 'package:where_is_it/routing/routing.dart';
 import 'package:where_is_it/searchbar/searchbar_view.dart';
 import 'package:where_is_it/singleton.dart';
+import 'package:where_is_it/store/explorer/grid_item_view/grid_item_view.dart';
 import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 import 'explorer_model.dart';
@@ -16,8 +16,7 @@ class ExplorerView extends StatelessWidget {
   ExplorerView({super.key}) {
     Singleton.getInstance();
     var root = Singleton.root;
-    root?.addChild(
-        StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
+    root?.addChild(StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
   }
 
   @override
@@ -40,18 +39,18 @@ class ExplorerView extends StatelessWidget {
                     onLongPress: () {
                       var navigateTo;
                       if (element['type'] == 'container') {
-                        navigateTo = Routing.navigateTo(context,
-                            Routing.CONTAINERVIEW, Routing.DIRECTION_TOP);
-                      } else {
                         navigateTo = Routing.navigateTo(
-                            context, Routing.ITEMVIEW, Routing.DIRECTION_TOP);
+                            context, Routing.CONTAINERVIEW, Routing.DIRECTION_TOP);
+                      } else {
+                        navigateTo =
+                            Routing.navigateTo(context, Routing.ITEMVIEW, Routing.DIRECTION_TOP);
                       }
 
                       Navigator.push(context, navigateTo);
                     },
                     onTap: () {
-                      var navigateTo = Routing.navigateTo(context,
-                          Routing.EXPLORERVIEW, Routing.DIRECTION_RIGHT);
+                      var navigateTo = Routing.navigateTo(
+                          context, Routing.EXPLORERVIEW, Routing.DIRECTION_RIGHT);
                       Navigator.push(context, navigateTo);
                     },
                     child: elementWidgetType(elements, index));
@@ -65,8 +64,7 @@ class ExplorerView extends StatelessWidget {
     );
   }
 
-  StatefulWidget elementWidgetType(
-      List<Map<String, dynamic>> elements, int index) {
+  StatefulWidget elementWidgetType(List<Map<String, dynamic>> elements, int index) {
     if (elements[index]['type'] == 'container') {
       return GridContainerView(elements[index]);
     } else {
@@ -74,8 +72,7 @@ class ExplorerView extends StatelessWidget {
     }
   }
 
-  SliverGridDelegateWithFixedCrossAxisCount elementGridDelegate(
-          int crossAxisCount) =>
+  SliverGridDelegateWithFixedCrossAxisCount elementGridDelegate(int crossAxisCount) =>
       SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: 3.0, // Horizontaler Abstand zwischen den Elementen

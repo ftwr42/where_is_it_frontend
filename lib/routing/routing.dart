@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/explorer/explorer_view.dart';
 import 'package:where_is_it/loginview/login_view.dart';
+import 'package:where_is_it/store/explorer/explorer_view.dart';
 import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
 
 import '../elements/container/container_view.dart';
@@ -165,8 +165,7 @@ class Routing {
     }
 
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          _getWidget(context, to),
+      pageBuilder: (context, animation, secondaryAnimation) => _getWidget(context, to),
       transitionsBuilder: transition,
     );
   }

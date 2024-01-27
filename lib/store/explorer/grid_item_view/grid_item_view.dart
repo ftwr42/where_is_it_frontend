@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_assets/styles/text.dart';
 
 class GridItemView extends StatefulWidget {
   late Map<String, dynamic> element;
