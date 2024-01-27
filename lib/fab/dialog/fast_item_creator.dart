@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 
 import '../../aa_assets/styles/text.dart';
 import '../../aa_project_defaults/textfields.dart';
@@ -11,6 +14,8 @@ class FastItemCreator extends StatelessWidget {
     var textEditingControllerLocation = TextEditingController();
     var textEditingControllerTitle = TextEditingController();
     var textEditingControllerJson = TextEditingController();
+
+    var item = {};
 
     return AlertDialog(
       content: Container(
@@ -51,7 +56,13 @@ class FastItemCreator extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          onPressed: () => {},
+          onPressed: () => {
+            item['title'] = textEditingControllerTitle.text,
+            item['location'] = textEditingControllerLocation.text,
+            item['container_id'] = "store_a",
+            textEditingControllerJson.text = jsonEncode(item),
+            NetworkManager.sendPostRequestItems(jsonEncode(item)),
+          },
           child: const Text('SAVE'),
         ),
         TextButton(

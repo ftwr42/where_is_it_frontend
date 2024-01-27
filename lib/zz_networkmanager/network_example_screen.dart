@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 
 class NetworkExampleScreen extends StatelessWidget {
   const NetworkExampleScreen({super.key});
@@ -13,7 +12,7 @@ class NetworkExampleScreen extends StatelessWidget {
           wrapperButton(
               child: ElevatedButton(
                   onPressed: () => {
-                        NetworkManager().sendPutRequest(),
+                        // NetworkManager().sendPutRequest(""),
                       },
                   child: const Text("POST"))),
         ],

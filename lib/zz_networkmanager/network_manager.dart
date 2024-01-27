@@ -1,15 +1,13 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 
 class NetworkManager {
   final URL = "server.locol.online";
 
-  Future<void> sendPutRequest() async {
+  static Future<void> sendPostRequestItems(String json) async {
     var headers = {'Content-Type': 'application/json'};
     var request =
-        http.Request('POST', Uri.parse('http://server.locol.online/tests'));
-    request.body = json.encode({"key1": "Azin", "key2": "love"});
+        http.Request('POST', Uri.parse('http://server.locol.online/items'));
+    request.body = json; //json.encode({"key1": "Azin", "key2": "love"});
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
