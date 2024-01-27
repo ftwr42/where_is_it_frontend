@@ -23,6 +23,7 @@ class StateHolder<T extends StateIF> {
 
   StateIF? getState(String nodeName) {
     for (int i = 0; i < _children.length; ++i) {
+      //todo handle with treeName not with nodeName, can be a feature but not unique enough
       var holder = _children[i];
       if (holder.nodeName == nodeName) {
         return holder.state;
@@ -32,6 +33,7 @@ class StateHolder<T extends StateIF> {
   }
 
   StateHolder<StateIF>? getStateHolder(String nodeName) {
+    //todo handle with treeName not with nodeName, can be a feature but not unique enough
     for (int i = 0; i < _children.length; ++i) {
       var holder = _children[i];
       if (holder.nodeName == nodeName) {

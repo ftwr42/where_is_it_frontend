@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
-import 'package:where_is_it/drawer/drawer_state.dart';
 import 'package:where_is_it/drawer/drawer_view.dart';
 import 'package:where_is_it/explorer/grid_item_view/grid_item_view.dart';
 import 'package:where_is_it/fab/fab_view.dart';
 import 'package:where_is_it/profile/profile_state.dart';
 import 'package:where_is_it/routing/routing.dart';
 import 'package:where_is_it/searchbar/searchbar_view.dart';
+import 'package:where_is_it/singleton.dart';
 import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 import 'explorer_model.dart';
@@ -14,9 +14,10 @@ import 'grid_container/grid_container_view.dart';
 
 class ExplorerView extends StatelessWidget {
   ExplorerView({super.key}) {
-    var shDrawer = StateHolder<DrawerState>(DrawerState(), nodeName: 'drawer');
-    var shProfile =
-        StateHolder<ProfileState>(ProfileState(), nodeName: 'profile');
+    Singleton.getInstance();
+    var root = Singleton.root;
+    root?.addChild(
+        StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
   }
 
   @override

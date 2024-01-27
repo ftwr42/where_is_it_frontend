@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/explorer/explorer_view.dart';
 import 'package:where_is_it/routing/routing.dart';
-import 'package:where_is_it/stateton.dart';
+import 'package:where_is_it/singleton.dart';
 import 'package:where_is_it/wii_state.dart';
 
-var stateon;
-
 void main() {
-  stateon = Stateon();
+  Singleton.getInstance();
   runApp(WiiApp());
 }
 
@@ -16,11 +14,10 @@ class WiiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var root = Stateon().root;
-    var state = root.state as WiiState;
+    var root = Singleton.root?.state as WiiState;
 
     return MaterialApp(
-      theme: state.theme,
+      theme: root.theme,
       home: ExplorerView(),
       routes: Routing.routes(context),
     );

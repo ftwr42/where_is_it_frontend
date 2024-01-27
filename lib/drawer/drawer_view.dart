@@ -6,8 +6,9 @@ import 'drawer_config.dart';
 
 class DrawerView extends StatefulWidget {
   DrawerView({super.key}) {
-    // var root = Stateon.inst.root;
-    // root.addChild(StateHolder<DrawerState>(DrawerState(), nodeName: 'drawer'));
+    // var stateHolder = Singleton().root.getStateHolder('wii');
+    // stateHolder?.addChild(
+    //     StateHolder<ProfileState>(ProfileState(), nodeName: "profile"));
   }
 
   @override
@@ -31,6 +32,8 @@ class _DrawerViewState extends State<DrawerView> {
   }
 
   Widget buildHeader() {
+    var state; // = Singleton().root.getState('profile') as ProfileState;
+
     return Container(
       color: Colors.blueAccent,
       padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -40,10 +43,14 @@ class _DrawerViewState extends State<DrawerView> {
             backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
             radius: 50,
           ),
-          credentialText(DrawerConfig.credentialList[0],
-              WiiTextStyles.credentials_name_style()),
-          credentialText(DrawerConfig.credentialList[1],
-              WiiTextStyles.credentials_email_style()),
+          Text(
+            '${state.firstName} ${state.lastName}',
+            style: WiiTextStyles.credentials_name_style(),
+          ),
+          Text(
+            '${state.email}',
+            style: WiiTextStyles.credentials_name_style(),
+          ),
         ],
       ),
     );
@@ -80,10 +87,5 @@ class _DrawerViewState extends State<DrawerView> {
               context, Routing.NETWORKEXAMPLE, Routing.DIRECTION_LEFT);
           Navigator.push(context, navigateTo);
         },
-      );
-
-  Widget credentialText(Map<String, dynamic> item, TextStyle textStyle) => Text(
-        item['text'],
-        style: textStyle,
       );
 }
