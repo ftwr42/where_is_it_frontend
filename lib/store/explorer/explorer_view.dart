@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:where_is_it/appbar/search_appbar.dart';
 import 'package:where_is_it/drawer/drawer_view.dart';
 import 'package:where_is_it/profile/profile_state.dart';
-import 'package:where_is_it/routing/routing.dart';
+import 'package:where_is_it/routing/rot.dart';
 import 'package:where_is_it/singleton.dart';
 import 'package:where_is_it/store/explorer/explorer_state.dart';
 import 'package:where_is_it/store/explorer/grid_item_view/grid_item_view.dart';
@@ -44,18 +44,16 @@ class ExplorerView extends StatelessWidget {
                     onLongPress: () {
                       var navigateTo;
                       if (element['type'] == 'container') {
-                        navigateTo = Routing.navigateTo(
-                            context, Routing.CONTAINERVIEW, Routing.DIRECTION_TOP);
+                        navigateTo = Rot.navigateTo(context, Rot.CONTAINERVIEW, Rot.DIRECTION_TOP);
                       } else {
-                        navigateTo =
-                            Routing.navigateTo(context, Routing.ITEMVIEW, Routing.DIRECTION_TOP);
+                        navigateTo = Rot.navigateTo(context, Rot.ITEMVIEW, Rot.DIRECTION_TOP);
                       }
 
                       Navigator.push(context, navigateTo);
                     },
                     onTap: () {
-                      var navigateTo = Routing.navigateTo(
-                          context, Routing.EXPLORERVIEW, Routing.DIRECTION_RIGHT);
+                      var navigateTo =
+                          Rot.navigateTo(context, Rot.EXPLORERVIEW, Rot.DIRECTION_RIGHT);
                       Navigator.push(context, navigateTo);
                     },
                     child: elementWidgetType(elements, index));

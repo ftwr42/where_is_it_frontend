@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/routing/routing.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:where_is_it/routing/rot.dart';
 import 'package:where_is_it/singleton.dart';
 import 'package:where_is_it/store/explorer/explorer_view.dart';
 import 'package:where_is_it/wii_state.dart';
@@ -16,10 +17,10 @@ class WiiApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var root = Singleton.root?.state as WiiState;
 
-    return MaterialApp(
+    return GetMaterialApp(
       theme: root.theme,
       home: ExplorerView(),
-      routes: Routing.routes(context),
+      routes: Rot.routes(context),
     );
   }
 }

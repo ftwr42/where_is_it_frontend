@@ -10,7 +10,7 @@ import '../elements/item/itemview.dart';
 import '../example/current_example.dart';
 import 'example_view/transition_example.dart';
 
-class Routing {
+class Rot {
   static const String USERVIEW = "userview";
   static const String ITEMVIEW = "itemview";
   static const String CONTAINERVIEW = "containerview";
@@ -45,7 +45,7 @@ class Routing {
       FABDIALOG1: (context) => FastItemCreator(context),
       FABDIALOG2: (context) => FastItemCreator(context),
       FABDIALOG3: (context) => FastItemCreator(context),
-      USERVIEW: (context) => const ProfileScreen(),
+      USERVIEW: (context) => ProfileScreen(),
     };
   }
 

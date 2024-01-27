@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../routing.dart';
+import '../rot.dart';
 
 class TransitionExample extends StatelessWidget {
   const TransitionExample({super.key});
@@ -14,8 +14,8 @@ class TransitionExample extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: ElevatedButton(
                 onPressed: () {
-                  var navigateTo = Routing.navigateTo(context,
-                      Routing.EXAMPLETRANSITION, Routing.DIRECTION_TOP);
+                  var navigateTo =
+                      Rot.navigateTo(context, Rot.EXAMPLETRANSITION, Rot.DIRECTION_TOP);
                   Navigator.of(context).push(navigateTo);
                 },
                 child: Text("TOP")),
@@ -24,8 +24,8 @@ class TransitionExample extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: ElevatedButton(
                 onPressed: () {
-                  var navigateTo = Routing.navigateTo(context,
-                      Routing.EXAMPLETRANSITION, Routing.DIRECTION_BOT);
+                  var navigateTo =
+                      Rot.navigateTo(context, Rot.EXAMPLETRANSITION, Rot.DIRECTION_BOT);
                   Navigator.of(context).push(navigateTo);
                 },
                 child: Text("BOT")),
@@ -34,8 +34,8 @@ class TransitionExample extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: ElevatedButton(
                 onPressed: () {
-                  var navigateTo = Routing.navigateTo(context,
-                      Routing.EXAMPLETRANSITION, Routing.DIRECTION_LEFT);
+                  var navigateTo =
+                      Rot.navigateTo(context, Rot.EXAMPLETRANSITION, Rot.DIRECTION_LEFT);
                   Navigator.of(context).push(navigateTo);
                 },
                 child: Text("LEFT")),
@@ -44,8 +44,8 @@ class TransitionExample extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: ElevatedButton(
                 onPressed: () {
-                  var navigateTo = Routing.navigateTo(context,
-                      Routing.EXAMPLETRANSITION, Routing.DIRECTION_RIGHT);
+                  var navigateTo =
+                      Rot.navigateTo(context, Rot.EXAMPLETRANSITION, Rot.DIRECTION_RIGHT);
                   Navigator.of(context).push(navigateTo);
                 },
                 child: Text("RIGHT")),
@@ -54,8 +54,7 @@ class TransitionExample extends StatelessWidget {
             alignment: Alignment.center,
             child: ElevatedButton(
                 onPressed: () {
-                  var navigateTo = Routing.navigateTo(
-                      context, Routing.EXPLORERVIEW, Routing.DIRECTION_LEFT);
+                  var navigateTo = Rot.navigateTo(context, Rot.EXPLORERVIEW, Rot.DIRECTION_LEFT);
                   Navigator.of(context).push(navigateTo);
                 },
                 child: Text("BACK")),
@@ -64,10 +63,10 @@ class TransitionExample extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: ElevatedButton(
               onPressed: () {
-                var navigateTo = Routing.navigateTo(
+                var navigateTo = Rot.navigateTo(
                   context,
-                  Routing.EXAMPLETRANSITION,
-                  Routing.DIRECTION_ZOOMBIG, // Use the new animation type
+                  Rot.EXAMPLETRANSITION,
+                  Rot.DIRECTION_ZOOMBIG, // Use the new animation type
                 );
                 Navigator.of(context).push(navigateTo);
               },
