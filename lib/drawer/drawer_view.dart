@@ -78,17 +78,36 @@ class _DrawerViewState extends State<DrawerView> {
       padding: const EdgeInsets.only(top: 15, bottom: 15),
       child: Column(
         children: [
-          const CircleAvatar(
-            backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
-            radius: 50,
+          Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
+                  radius: 50,
+                ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                  child: Icon(Icons.switch_account),
+                ),
+              ),
+            ],
           ),
-          Text(
-            '${state.firstName} ${state.lastName}',
-            style: WiiTextStyles.credentials_name_style(),
-          ),
-          Text(
-            '${state.email}',
-            style: WiiTextStyles.credentials_name_style(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '${state.firstName} ${state.lastName}',
+                style: WiiTextStyles.credentials_name_style(),
+              ),
+              Text(
+                '${state.email}',
+                style: WiiTextStyles.credentials_name_style(),
+              ),
+            ],
           ),
         ],
       ),
