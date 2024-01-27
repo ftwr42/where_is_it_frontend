@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 import 'package:where_is_it/singleton.dart';
-import 'package:where_is_it/store/fab/dialog/state.dart';
+import 'package:where_is_it/store/fab/dialog/fast_item_creator_state.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
@@ -12,17 +12,16 @@ class FastItemCreator extends StatelessWidget {
   FastItemCreator(BuildContext context, {super.key}) {
     Singleton.getInstance();
     var root = Singleton.root;
-    if (!root?.stateHolderExists('fastitemcreator')) {
-      root?.addChild(
+    if (!root!.stateHolderExists('fastitemcreator')) {
+      root.addChild(
           StateHolder<FastItemCreatorState>(FastItemCreatorState(), nodeName: 'fastitemcreator'));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    var textEditingControllerLocation = TextEditingController();
-    var textEditingControllerTitle = TextEditingController();
-    var textEditingControllerJson = TextEditingController();
+    Singleton.getInstance();
+    var state = Singleton.root?.getState('fastitemcreator') as FastItemCreatorState;
 
     var item = {};
 
@@ -46,15 +45,15 @@ class FastItemCreator extends StatelessWidget {
             ),
             Column(
               children: [
-                _propertiesInput("location", textEditingControllerLocation),
+                _propertiesInput("location", state.textEditingControllerLocation),
                 SizedBox(
                   height: 10,
                 ),
-                _propertiesInput("title", textEditingControllerTitle),
+                _propertiesInput("title", state.textEditingControllerTitle),
                 SizedBox(
                   height: 10,
                 ),
-                _propertiesInput("json", textEditingControllerJson),
+                _propertiesInput("json", state.textEditingControllerJson),
                 SizedBox(
                   height: 10,
                 ),
@@ -66,10 +65,10 @@ class FastItemCreator extends StatelessWidget {
       actions: <Widget>[
         TextButton(
           onPressed: () => {
-            item['title'] = textEditingControllerTitle.text,
-            item['location'] = textEditingControllerLocation.text,
+            item['title'] = state.textEditingControllerTitle.text,
+            item['location'] = state.textEditingControllerLocation.text,
             item['container_id'] = "store_a",
-            textEditingControllerJson.text = jsonEncode(item),
+            state.textEditingControllerJson.text = jsonEncode(item),
             NetworkManager.sendPostRequestItems(jsonEncode(item)),
           },
           child: const Text('SAVE'),
