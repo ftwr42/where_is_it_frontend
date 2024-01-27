@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 
-class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

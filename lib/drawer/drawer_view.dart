@@ -81,23 +81,33 @@ class _DrawerViewState extends State<DrawerView> {
           Stack(
             children: [
               Align(
-                alignment: Alignment.center,
-                child: const CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
-                  radius: 50,
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
+                    radius: 50,
+                  ),
                 ),
               ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                  child: Icon(Icons.switch_account),
+              GestureDetector(
+                onTap: () {
+                  var navigateTo =
+                      Routing.navigateTo(context, Routing.USERVIEW, Routing.DIRECTION_ZOOMBIG);
+                  Navigator.push(context, navigateTo);
+                },
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: Icon(Icons.switch_account),
+                  ),
                 ),
               ),
             ],
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '${state.firstName} ${state.lastName}',

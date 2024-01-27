@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/loginview/login_view.dart';
+import 'package:where_is_it/profile/profile_screen.dart';
 import 'package:where_is_it/store/explorer/explorer_view.dart';
 import 'package:where_is_it/store/fab/dialog/fast_item_creator.dart';
 import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
@@ -44,6 +45,7 @@ class Routing {
       FABDIALOG1: (context) => FastItemCreator(context),
       FABDIALOG2: (context) => FastItemCreator(context),
       FABDIALOG3: (context) => FastItemCreator(context),
+      USERVIEW: (context) => const ProfileScreen(),
     };
   }
 
@@ -167,6 +169,7 @@ class Routing {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => _getWidget(context, to),
       transitionsBuilder: transition,
+      transitionDuration: const Duration(milliseconds: 600),
     );
   }
 
