@@ -1,13 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:where_is_it/zz_networkmanager/network_manager.dart';
+import 'package:get/get.dart';
+import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 
-import '../../aa_assets/styles/text.dart';
-import '../../aa_project_defaults/project_text_fields.dart';
-
-class FastItemCreator extends StatelessWidget {
-  const FastItemCreator(BuildContext context, {super.key});
+class FastContainerCreator extends StatelessWidget {
+  const FastContainerCreator(BuildContext context, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +12,10 @@ class FastItemCreator extends StatelessWidget {
     var textEditingControllerTitle = TextEditingController();
     var textEditingControllerJson = TextEditingController();
 
-    var item = {};
+    var item = {
+      "location": textEditingControllerLocation.text,
+      "title": textEditingControllerTitle.obs
+    };
 
     return AlertDialog(
       content: Container(
@@ -37,11 +37,11 @@ class FastItemCreator extends StatelessWidget {
             ),
             Column(
               children: [
-                _propertiesInput("location", textEditingControllerLocation),
+                _propertiesInput('Location', textEditingControllerLocation),
                 SizedBox(
                   height: 10,
                 ),
-                _propertiesInput("title", textEditingControllerTitle),
+                _propertiesInput('Title', textEditingControllerTitle),
                 SizedBox(
                   height: 10,
                 ),
@@ -57,11 +57,9 @@ class FastItemCreator extends StatelessWidget {
       actions: <Widget>[
         TextButton(
           onPressed: () => {
-            item['title'] = textEditingControllerTitle.text,
-            item['location'] = textEditingControllerLocation.text,
-            item['container_id'] = "store_a",
-            textEditingControllerJson.text = jsonEncode(item),
-            NetworkManager.sendPostRequestItems(jsonEncode(item)),
+            textEditingControllerJson.text =
+                textEditingControllerLocation.text + textEditingControllerTitle.text
+            // Navigator.of(context).pop(),
           },
           child: const Text('SAVE'),
         ),
@@ -73,16 +71,14 @@ class FastItemCreator extends StatelessWidget {
     );
   }
 
-  static Widget _propertiesInput(
-          String key, TextEditingController controller) =>
-      Container(
+  static Widget _propertiesInput(String key, TextEditingController controller) => Container(
         child: ProjectTextFields.textFieldCompact(key, controller),
       );
 
   Widget title() {
     var style = WiiTextStyles.header1Style();
     return Text(
-      "Item",
+      "Container",
       style: style,
     );
   }
