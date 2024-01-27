@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
+import 'package:where_is_it/singleton.dart';
+import 'package:where_is_it/store/fab/dialog/fast_container_creator_state.dart';
+import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 class FastContainerCreator extends StatelessWidget {
-  const FastContainerCreator(BuildContext context, {super.key});
+  FastContainerCreator(BuildContext context, {super.key}) {
+    Singleton.getInstance();
+    var root = Singleton.root;
+    if (!root!.stateHolderExists('fastcontainercreator')) {
+      root.addChild(StateHolder<FastContainerCreatorState>(FastContainerCreatorState(),
+          nodeName: 'fastcontainercreator'));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    var textEditingControllerLocation = TextEditingController();
-    var textEditingControllerTitle = TextEditingController();
-    var textEditingControllerJson = TextEditingController();
+    Singleton.getInstance();
+    var state = Singleton.root?.getState('fastcontainercreator') as FastContainerCreatorState;
 
-    var item = {
-      "location": textEditingControllerLocation.text,
-      "title": textEditingControllerTitle.obs
-    };
+    var item = {};
 
     return AlertDialog(
       content: Container(
@@ -37,15 +42,15 @@ class FastContainerCreator extends StatelessWidget {
             ),
             Column(
               children: [
-                _propertiesInput('Location', textEditingControllerLocation),
+                _propertiesInput('Location', state.textEditingControllerLocation),
                 SizedBox(
                   height: 10,
                 ),
-                _propertiesInput('Title', textEditingControllerTitle),
+                _propertiesInput('Title', state.textEditingControllerTitle),
                 SizedBox(
                   height: 10,
                 ),
-                _propertiesInput("json", textEditingControllerJson),
+                _propertiesInput("json", state.textEditingControllerJson),
                 SizedBox(
                   height: 10,
                 ),
@@ -57,8 +62,8 @@ class FastContainerCreator extends StatelessWidget {
       actions: <Widget>[
         TextButton(
           onPressed: () => {
-            textEditingControllerJson.text =
-                textEditingControllerLocation.text + textEditingControllerTitle.text
+            state.textEditingControllerJson.text =
+                state.textEditingControllerLocation.text + state.textEditingControllerTitle.text
             // Navigator.of(context).pop(),
           },
           child: const Text('SAVE'),
