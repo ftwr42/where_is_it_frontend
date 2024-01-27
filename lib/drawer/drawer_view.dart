@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/drawer/drawer_state.dart';
+import 'package:where_is_it/profile/profile_state.dart';
+import 'package:where_is_it/singleton.dart';
+import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 import '../routing/routing.dart';
 import 'drawer_config.dart';
 
 class DrawerView extends StatefulWidget {
   DrawerView({super.key}) {
-    // var stateHolder = Singleton().root.getStateHolder('wii');
-    // stateHolder?.addChild(
-    //     StateHolder<ProfileState>(ProfileState(), nodeName: "profile"));
+    Singleton.getInstance();
+    var root = Singleton.root;
+    root?.addChild(StateHolder<DrawerState>(DrawerState(), nodeName: 'drawer'));
+    root?.addChild(
+        StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
   }
 
   @override
@@ -18,6 +24,8 @@ class DrawerView extends StatefulWidget {
 class _DrawerViewState extends State<DrawerView> {
   @override
   Widget build(BuildContext context) {
+    // var state = Singleton.root?.getState('drawer');
+
     return Drawer(
       child: SingleChildScrollView(
         child: Column(
@@ -32,7 +40,7 @@ class _DrawerViewState extends State<DrawerView> {
   }
 
   Widget buildHeader() {
-    var state; // = Singleton().root.getState('profile') as ProfileState;
+    var state = Singleton.root?.getState('profile') as ProfileState;
 
     return Container(
       color: Colors.blueAccent,
