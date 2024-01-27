@@ -4,12 +4,12 @@ import 'package:where_is_it/drawer/drawer_view.dart';
 import 'package:where_is_it/profile/profile_state.dart';
 import 'package:where_is_it/routing/routing.dart';
 import 'package:where_is_it/singleton.dart';
+import 'package:where_is_it/store/explorer/explorer_state.dart';
 import 'package:where_is_it/store/explorer/grid_item_view/grid_item_view.dart';
 import 'package:where_is_it/store/fab/fab_view.dart';
 import 'package:where_is_it/store/search/searchbar_view.dart';
 import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
-import 'explorer_model.dart';
 import 'grid_container/grid_container_view.dart';
 
 class ExplorerView extends StatelessWidget {
@@ -17,11 +17,16 @@ class ExplorerView extends StatelessWidget {
     Singleton.getInstance();
     var root = Singleton.root;
     root?.addChild(StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
+    root?.addChild(StateHolder<ExplorerState>(ExplorerState(), nodeName: 'explorer'));
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> elements = ExplorerModel.items;
+    Singleton.getInstance();
+    var root = Singleton.root;
+    var state = root?.getState('explorer') as ExplorerState;
+
+    var elements = state.elements;
 
     return Scaffold(
       appBar: WiiAppBar.getBar(),
@@ -29,7 +34,7 @@ class ExplorerView extends StatelessWidget {
       floatingActionButton: const FabView(),
       body: CustomScrollView(
         slivers: [
-          SearchBarView(elements),
+          SearchBarView(),
           SliverGrid(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {

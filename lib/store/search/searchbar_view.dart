@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SearchBarView extends StatefulWidget {
-  List<Map<String, dynamic>> elements;
-
-  SearchBarView(this.elements);
-
   @override
   State<SearchBarView> createState() => _SearchBarViewState();
 }
@@ -28,9 +24,9 @@ class _SearchBarViewState extends State<SearchBarView> {
           child: TextField(
             controller: textEditingController,
             onChanged: (String value) {
-              widget.elements.forEach((element) {
-                if (element.containsValue(value)) {}
-              });
+              // widget.elements.forEach((element) {
+              //   if (element.containsValue(value)) {}
+              // });
             },
             decoration: InputDecoration(
               labelText: 'Search',

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:where_is_it/zz_stateholder/stateif.dart';
 
 class ExplorerState extends StateIF {
-  List<Map<String, dynamic>> items = [
+  List<Map<String, dynamic>> elements = [
     {
       'image': AssetImage('assets/images/237-536x354.jpg'),
       'type': 'container',
