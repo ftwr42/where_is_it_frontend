@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/explorer/explorer_view.dart';
 import 'package:where_is_it/routing/routing.dart';
+import 'package:where_is_it/stateton.dart';
 
 void main() {
+  Stateon.instance;
   runApp(WiiApp());
 }
 

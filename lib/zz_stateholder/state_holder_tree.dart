@@ -1,4 +1,4 @@
-import 'package:where_is_it/routing/stateconfig.dart';
+import 'package:where_is_it/zz_stateholder/stateconfig.dart';
 
 class StateHolderTree<T extends StateConfig> {
   late String nodeName;
