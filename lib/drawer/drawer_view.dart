@@ -5,7 +5,10 @@ import '../routing/routing.dart';
 import 'drawer_config.dart';
 
 class DrawerView extends StatefulWidget {
-  const DrawerView({super.key});
+  DrawerView({super.key}) {
+    // var root = Stateon.inst.root;
+    // root.addChild(StateHolder<DrawerState>(DrawerState(), nodeName: 'drawer'));
+  }
 
   @override
   State<DrawerView> createState() => _DrawerViewState();

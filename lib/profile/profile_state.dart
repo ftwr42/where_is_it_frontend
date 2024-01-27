@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:where_is_it/zz_stateholder/stateif.dart';
 
-class UserConfig {
+class ProfileState extends StateIF {
   static final Widget TITLE = const Text("User Profile");
   static final Widget PROFILE_DETAILS = const Text('Edit Profile Details');
   static final String PROFILE_FIRSTNAME = "Firstname";

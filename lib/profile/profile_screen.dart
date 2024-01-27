@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_project_defaults/textfields.dart';
-import 'package:where_is_it/profile/user_config.dart';
+import 'package:where_is_it/profile/profile_state.dart';
 
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({super.key});
@@ -9,14 +9,14 @@ class UserProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: UserConfig.TITLE,
+        title: ProfileState.TITLE,
       ),
       body: Center(
         child: Column(
           children: [
             ElevatedButton(
               onPressed: () {},
-              child: UserConfig.PROFILE_DETAILS,
+              child: ProfileState.PROFILE_DETAILS,
             ),
           ],
         ),
@@ -26,7 +26,7 @@ class UserProfilePage extends StatelessWidget {
 
   Widget properties(String name) {
     return Padding(
-      padding: EdgeInsets.all(UserConfig.PROPERTIES_PATTERN),
+      padding: EdgeInsets.all(ProfileState.PROPERTIES_PATTERN),
       child: ProjectTextFields.nameField(name),
     );
   }
