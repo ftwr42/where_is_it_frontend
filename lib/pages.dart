@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:where_is_it/loginview/login_view.dart';
 import 'package:where_is_it/profile/profile_screen.dart';
-import 'package:where_is_it/store/explorer/explorer_view.dart';
 import 'package:where_is_it/store/fab/dialog/fast_item_creator.dart';
+import 'package:where_is_it/store/store_view.dart';
 import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
 
 import 'elements/container/container_view.dart';
@@ -35,13 +35,13 @@ class WiiPages {
 
   static List<GetPage> getPages() {
     return [
-      GetPage(name: '/', page: () => ExplorerView()),
+      GetPage(name: '/', page: () => StoreView()),
     ];
   }
 
   static Map<String, WidgetBuilder> routes(BuildContext context) {
     return <String, WidgetBuilder>{
-      EXPLORERVIEW: (context) => ExplorerView(),
+      EXPLORERVIEW: (context) => StoreView(),
       ITEMVIEW: (context) => const ItemView(),
       CONTAINERVIEW: (context) => const ContainerView(),
       LOGINVIEW: (context) => const LoginView(),

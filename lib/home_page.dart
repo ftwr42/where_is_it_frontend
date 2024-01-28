@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/drawer/drawer_view.dart';
-import 'package:where_is_it/store/explorer/explorer_view.dart';
 import 'package:where_is_it/store/fab/fab_view.dart';
+import 'package:where_is_it/store/store_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(),
       drawer: DrawerView(),
       floatingActionButton: const FabView(),
-      body: ExplorerView(),
+      body: StoreView(),
     );
   }
 }

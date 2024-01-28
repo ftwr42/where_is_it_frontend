@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 import 'package:where_is_it/profile/profile_state.dart';
-import 'package:where_is_it/store/store_state.dart';
+import 'package:where_is_it/store/store_properties_state.dart';
 
 import '../pages.dart';
 

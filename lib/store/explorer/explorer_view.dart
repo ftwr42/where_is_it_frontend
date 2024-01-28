@@ -1,50 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/pages.dart';
 import 'package:where_is_it/store/explorer/explorer_state.dart';
-import 'package:where_is_it/store/explorer/grid_item_view/grid_item_view.dart';
-import 'package:where_is_it/store/search/searchbar_view.dart';
 
 import 'grid_container/grid_container_view.dart';
+import 'grid_item_view/grid_item_view.dart';
 
 class ExplorerView extends StatelessWidget {
-  ExplorerView({super.key});
+  const ExplorerView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var elements = ExplorerState().elements;
+    var state = ExplorerState();
+    var elements = state.elements;
 
-    return CustomScrollView(
-      slivers: [
-        SearchBarView(),
-        SliverGrid(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              var element = elements[index];
-              return GestureDetector(
-                  onLongPress: () {
-                    var navigateTo;
-                    if (element['type'] == 'container') {
-                      navigateTo = WiiPages.navigateTo(
-                          context, WiiPages.CONTAINERVIEW, WiiPages.DIRECTION_TOP);
-                    } else {
-                      navigateTo =
-                          WiiPages.navigateTo(context, WiiPages.ITEMVIEW, WiiPages.DIRECTION_TOP);
-                    }
+    return SliverGrid(
+      delegate: SliverChildBuilderDelegate(
+        (BuildContext context, int index) {
+          var element = elements[index];
+          return GestureDetector(
+              onLongPress: () {
+                var navigateTo;
+                if (element['type'] == 'container') {
+                  navigateTo =
+                      WiiPages.navigateTo(context, WiiPages.CONTAINERVIEW, WiiPages.DIRECTION_TOP);
+                } else {
+                  navigateTo =
+                      WiiPages.navigateTo(context, WiiPages.ITEMVIEW, WiiPages.DIRECTION_TOP);
+                }
 
-                    Navigator.push(context, navigateTo);
-                  },
-                  onTap: () {
-                    var navigateTo = WiiPages.navigateTo(
-                        context, WiiPages.EXPLORERVIEW, WiiPages.DIRECTION_RIGHT);
-                    Navigator.push(context, navigateTo);
-                  },
-                  child: elementWidgetType(elements, index));
-            },
-            childCount: elements.length,
-          ),
-          gridDelegate: elementGridDelegate(2),
-        ),
-      ],
+                Navigator.push(context, navigateTo);
+              },
+              onTap: () {
+                var navigateTo =
+                    WiiPages.navigateTo(context, WiiPages.EXPLORERVIEW, WiiPages.DIRECTION_RIGHT);
+                Navigator.push(context, navigateTo);
+              },
+              child: elementWidgetType(elements, index));
+        },
+        childCount: elements.length,
+      ),
+      gridDelegate: elementGridDelegate(2),
     );
   }
 
