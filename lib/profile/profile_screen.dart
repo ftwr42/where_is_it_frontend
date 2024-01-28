@@ -4,20 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 import 'package:where_is_it/profile/profile_state.dart';
-import 'package:where_is_it/singleton.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
-import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key}) {
-    Singleton.getInstance();
-    var root = Singleton.root;
-    root?.addChild(StateHolder<ProfileState>(ProfileState(), nodeName: "profilestate"));
-  }
+  ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var state = Singleton.root?.getState('profilestate') as ProfileState;
+    var state = ProfileState();
 
     var profile = {};
 

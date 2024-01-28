@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
-import 'package:where_is_it/singleton.dart';
 import 'package:where_is_it/store/fab/dialog/fast_container_creator_state.dart';
-import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
 class FastContainerCreator extends StatelessWidget {
-  FastContainerCreator(BuildContext context, {super.key}) {
-    Singleton.getInstance();
-    var root = Singleton.root;
-    if (!root!.stateHolderExists('fastcontainercreator')) {
-      root.addChild(StateHolder<FastContainerCreatorState>(FastContainerCreatorState(),
-          nodeName: 'fastcontainercreator'));
-    }
-  }
+  FastContainerCreator(BuildContext context, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    Singleton.getInstance();
-    var state = Singleton.root?.getState('fastcontainercreator') as FastContainerCreatorState;
+    var state = FastContainerCreatorState();
 
     var item = {};
 

@@ -1,48 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
-import 'package:where_is_it/drawer/drawer_state.dart';
 import 'package:where_is_it/profile/profile_state.dart';
-import 'package:where_is_it/singleton.dart';
 import 'package:where_is_it/store/store_state.dart';
-import 'package:where_is_it/zz_stateholder/state_holder.dart';
 
-import '../routing/rot.dart';
+import '../pages.dart';
 
 class DrawerView extends GetView<ProfileState> {
-  DrawerView({super.key}) {
-    Singleton.getInstance();
-    var root = Singleton.root;
-    root?.addChild(StateHolder<DrawerState>(DrawerState(), nodeName: 'drawer'));
-    root?.addChild(StateHolder<ProfileState>(ProfileState(), nodeName: 'profile'));
-    root?.addChild(StateHolder<StoreState>(StoreState(), nodeName: 'store'));
-  }
+  DrawerView({super.key});
 
   static final List<Map<String, dynamic>> menuList = [
-    {'leading': Icon(Icons.home), 'title': "Start View", 'route': Rot.EXPLORERVIEW},
-    {'leading': Icon(Icons.add_circle_outline), 'title': "Item View", 'route': Rot.ITEMVIEW},
+    {'leading': Icon(Icons.home), 'title': "Start View", 'route': WiiPages.EXPLORERVIEW},
+    {'leading': Icon(Icons.add_circle_outline), 'title': "Item View", 'route': WiiPages.ITEMVIEW},
     {
       'leading': Icon(Icons.add_circle_outline),
       'title': "Container View",
-      'route': Rot.CONTAINERVIEW
+      'route': WiiPages.CONTAINERVIEW
     },
-    {'leading': Icon(Icons.add_circle_outline), 'title': "Login View", 'route': Rot.LOGINVIEW},
+    {'leading': Icon(Icons.add_circle_outline), 'title': "Login View", 'route': WiiPages.LOGINVIEW},
     {
       'leading': Icon(Icons.add_circle_outline),
       'title': "Example Transition",
-      'route': Rot.EXAMPLETRANSITION
+      'route': WiiPages.EXAMPLETRANSITION
     },
-    {'leading': Icon(Icons.exit_to_app_rounded), 'title': "Example", 'route': Rot.CURRENTEXAMPLE},
+    {
+      'leading': Icon(Icons.exit_to_app_rounded),
+      'title': "Example",
+      'route': WiiPages.CURRENTEXAMPLE
+    },
     {
       'leading': Icon(Icons.network_wifi_2_bar_outlined),
       'title': "Network Examples",
-      'route': Rot.NETWORKEXAMPLE
+      'route': WiiPages.NETWORKEXAMPLE
     },
   ];
 
   static final List settingsList = [
-    {'leading': Icon(Icons.login), 'title': "Login", 'route': Rot.LOGINVIEW},
-    {'leading': Icon(Icons.settings), 'title': "Settings", 'route': Rot.ITEMVIEW},
+    {'leading': Icon(Icons.login), 'title': "Login", 'route': WiiPages.LOGINVIEW},
+    {'leading': Icon(Icons.settings), 'title': "Settings", 'route': WiiPages.ITEMVIEW},
   ];
 
   @override
@@ -63,7 +58,7 @@ class DrawerView extends GetView<ProfileState> {
   }
 
   Widget buildHeader(BuildContext context) {
-    var state = Singleton.root?.getState('profile') as ProfileState;
+    var state = ProfileState();
 
     return Container(
       color: Colors.blueAccent,
@@ -84,7 +79,8 @@ class DrawerView extends GetView<ProfileState> {
               ),
               GestureDetector(
                 onTap: () {
-                  var navigateTo = Rot.navigateTo(context, Rot.USERVIEW, Rot.DIRECTION_ZOOMBIG);
+                  var navigateTo =
+                      WiiPages.navigateTo(context, WiiPages.USERVIEW, WiiPages.DIRECTION_ZOOMBIG);
                   Navigator.push(context, navigateTo);
                 },
                 child: const Align(
@@ -118,7 +114,7 @@ class DrawerView extends GetView<ProfileState> {
   }
 
   Widget buildMenuItems(BuildContext context) {
-    var state = Singleton.root?.getState('store') as StoreState;
+    var state = StoreState();
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -145,7 +141,8 @@ class DrawerView extends GetView<ProfileState> {
         leading: item['leading'],
         title: Text(item['title']),
         onTap: () {
-          var navigateTo = Rot.navigateTo(context, Rot.NETWORKEXAMPLE, Rot.DIRECTION_LEFT);
+          var navigateTo =
+              WiiPages.navigateTo(context, WiiPages.NETWORKEXAMPLE, WiiPages.DIRECTION_LEFT);
           Navigator.push(context, navigateTo);
         },
       );

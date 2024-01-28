@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:where_is_it/zz_stateholder/stateif.dart';
+import 'package:where_is_it/zz_state/stateif.dart';
 
 class ProfileState extends StateIF {
   var hasChanged = false.obs;
