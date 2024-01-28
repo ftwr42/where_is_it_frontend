@@ -8,10 +8,7 @@ class GridElementModel {
   late AssetImage image;
 
   GridElementModel(String imagePath,
-      {required this.type,
-      required this.name,
-      required this.isinid,
-      required this.shortDescription}) {
+      {this.type = "", this.name = "", this.isinid = "", this.shortDescription = ""}) {
     image = AssetImage(imagePath);
   }
 }

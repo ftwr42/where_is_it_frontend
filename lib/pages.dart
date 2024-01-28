@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:where_is_it/aa_home/explorer/elements/elements_page.dart';
 import 'package:where_is_it/aa_home/home_page.dart';
 import 'package:where_is_it/aa_model/store_model.dart';
 import 'package:where_is_it/loginview/login_view.dart';
@@ -7,6 +8,7 @@ import 'package:where_is_it/profile/profile_page.dart';
 import 'package:where_is_it/store/store_page.dart';
 import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
 
+import 'aa_model/grid_element_model.dart';
 import 'example/current_example.dart';
 import 'routing/example_view/transition_example.dart';
 
@@ -36,6 +38,7 @@ class WiiPages {
     return [
       GetPage(name: '/', page: () => HomePage()),
       GetPage(name: '/profile', page: () => ProfilePage()),
+      GetPage(name: '/profile', page: () => ElementsPage(model: GridElementModel(""))),
       GetPage(
           name: '/store',
           page: () => StorePage(

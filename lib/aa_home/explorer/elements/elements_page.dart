@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:where_is_it/aa_home/explorer/gridelements/grid_element_controller.dart';
+import 'package:where_is_it/aa_model/grid_element_model.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
-class ElementsView extends StatelessWidget {
-  const ElementsView({super.key});
+class ElementsPage extends GetView<GridElementController> {
+  late GridElementModel model;
+  var cName = TextEditingController();
+  var cIsinid = TextEditingController();
+  var cShortDescription = TextEditingController();
+  late BuildContext context;
+  ElementsPage({required this.model, super.key});
 
   @override
   Widget build(BuildContext context) {
+    this.context = context;
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -56,7 +65,21 @@ class ElementsView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          var find = Get.find<GridElementController>();
+                          var model = find.getElementModel;
+
+                          var name = cName.text;
+                          var isinid = cIsinid.text;
+                          var shortDescription = cShortDescription.text;
+                          model.shortDescription = name;
+                          model.isinid = isinid;
+                          model.shortDescription = shortDescription;
+
+                          find.change();
+
+                          Navigator.of(context).pop();
+                        },
                         child: Text('SAVE'),
                       ),
                     ],
@@ -78,15 +101,18 @@ class ElementsView extends StatelessWidget {
         ),
       );
 
-  Widget itemProperties() => Container(
-        child: Column(
-          children: [
-            inputField("Item Name"),
-            inputField("Item Description"),
-            inputField("Item counts"),
-          ],
-        ),
-      );
+  Widget itemProperties() {
+    var model = controller.getElementModel;
+    return Container(
+      child: Column(
+        children: [
+          inputField("${model.name}", cName),
+          inputField("${model.isinid}", cIsinid),
+          inputField("${model.shortDescription}", cShortDescription),
+        ],
+      ),
+    );
+  }
 
   Widget itemDescription() => Container(
         child: TextField(
@@ -99,7 +125,7 @@ class ElementsView extends StatelessWidget {
         ),
       );
 
-  Widget inputField(String label) => Container(
+  Widget inputField(String label, TextEditingController controller) => Container(
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Row(
@@ -107,6 +133,7 @@ class ElementsView extends StatelessWidget {
               // Textfeld
               Expanded(
                 child: TextField(
+                  controller: controller,
                   decoration: InputDecoration(
                     labelText: label,
                     border: OutlineInputBorder(),
