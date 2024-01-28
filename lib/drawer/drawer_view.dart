@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 import 'package:where_is_it/aa_assets/styles/text.dart';
-import 'package:where_is_it/profile/profile_state.dart';
+import 'package:where_is_it/drawer/drawer_controller.dart';
 import 'package:where_is_it/store/store_properties_state.dart';
 
 import '../pages.dart';
 
-class DrawerView extends GetView<ProfileState> {
+class DrawerView extends GetView<WiiDrawerController> {
   DrawerView({super.key});
 
   static final List<Map<String, dynamic>> menuList = [
@@ -42,8 +42,6 @@ class DrawerView extends GetView<ProfileState> {
 
   @override
   Widget build(BuildContext context) {
-    // var state = Singleton.root?.getState('drawer');
-
     return Drawer(
       child: SingleChildScrollView(
         child: Column(
@@ -58,8 +56,6 @@ class DrawerView extends GetView<ProfileState> {
   }
 
   Widget buildHeader(BuildContext context) {
-    var state = ProfileState();
-
     return Container(
       color: Colors.blueAccent,
       padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -98,11 +94,11 @@ class DrawerView extends GetView<ProfileState> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${state.firstName} ${state.lastName} ${controller.hasChanged.string}',
+                  '${controller.getProfileModel.firstName} ${controller.getProfileModel.lastName}',
                   style: WiiTextStyles.credentials_name_style(),
                 ),
                 Text(
-                  '${state.email}',
+                  '${controller.getProfileModel.email}',
                   style: WiiTextStyles.credentials_name_style(),
                 ),
               ],

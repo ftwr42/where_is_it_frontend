@@ -33,7 +33,7 @@ class NetworkManager {
     }
   }
 
-  static Future<void> sendPostProfile(String json) async {
+  static Future<void> sendPostProfiles(String json) async {
     var headers = {'Content-Type': 'application/json'};
     var request = http.Request('POST', Uri.parse('http://server.locol.online/profiles'));
     request.body = json; //json.encode({"key1": "Azin", "key2": "love"});

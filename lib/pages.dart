@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:where_is_it/loginview/login_view.dart';
-import 'package:where_is_it/profile/profile_screen.dart';
+import 'package:where_is_it/profile/profile_page.dart';
 import 'package:where_is_it/store/fab/dialog/fast_item_creator.dart';
 import 'package:where_is_it/store/store_view.dart';
 import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
@@ -36,6 +36,7 @@ class WiiPages {
   static List<GetPage> getPages() {
     return [
       GetPage(name: '/', page: () => StoreView()),
+      GetPage(name: '/profile', page: () => StoreView()),
     ];
   }
 
@@ -52,7 +53,7 @@ class WiiPages {
       FABDIALOG1: (context) => FastItemCreator(context),
       FABDIALOG2: (context) => FastItemCreator(context),
       FABDIALOG3: (context) => FastItemCreator(context),
-      USERVIEW: (context) => ProfileScreen(),
+      USERVIEW: (context) => ProfilePage(),
     };
   }
 
