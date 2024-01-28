@@ -7,8 +7,6 @@ import 'package:where_is_it/profile/profile_page.dart';
 import 'package:where_is_it/store/store_page.dart';
 import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
 
-import 'elements/container/container_view.dart';
-import 'elements/item/itemview.dart';
 import 'example/current_example.dart';
 import 'routing/example_view/transition_example.dart';
 
@@ -49,8 +47,8 @@ class WiiPages {
   static Map<String, WidgetBuilder> routes(BuildContext context) {
     return <String, WidgetBuilder>{
       // EXPLORERVIEW: (context) => StoreView(),
-      ITEMVIEW: (context) => const ItemView(),
-      CONTAINERVIEW: (context) => const ContainerView(),
+      // ITEMVIEW: (context) => const ItemView(),
+      // CONTAINERVIEW: (context) => const ContainerView(),
       LOGINVIEW: (context) => const LoginView(),
       EXAMPLETRANSITION: (context) => const TransitionExample(),
       CURRENTEXAMPLE: (context) => FirstScreen(),

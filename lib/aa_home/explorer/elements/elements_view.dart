@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../aa_project_defaults/project_text_styles.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
 class ElementsView extends StatelessWidget {
   const ElementsView({super.key});
