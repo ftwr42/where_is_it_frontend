@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:where_is_it/aa_model/ProfileModel.dart';
-import 'package:where_is_it/aa_model/StoreModel.dart';
+import 'package:where_is_it/aa_model/profile_model.dart';
+import 'package:where_is_it/aa_model/store_model.dart';
 
 class WiiDrawerController extends RxController {
   var _profile = ProfileModel().obs;

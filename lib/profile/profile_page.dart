@@ -6,7 +6,7 @@ import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 import 'package:where_is_it/drawer/drawer_controller.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 
-import '../aa_model/ProfileModel.dart';
+import '../aa_model/profile_model.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});

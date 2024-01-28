@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:where_is_it/aa_model/StoreModel.dart';
+import 'package:where_is_it/aa_model/store_model.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 import 'package:where_is_it/drawer/drawer_controller.dart';

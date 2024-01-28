@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:where_is_it/aa_home/home_page.dart';
-import 'package:where_is_it/aa_model/StoreModel.dart';
+import 'package:where_is_it/aa_model/store_model.dart';
 import 'package:where_is_it/loginview/login_view.dart';
 import 'package:where_is_it/profile/profile_page.dart';
 import 'package:where_is_it/store/store_page.dart';
