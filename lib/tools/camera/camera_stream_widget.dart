@@ -24,8 +24,7 @@ class _CameraStreamWidgetState extends State<CameraStreamWidget> {
     _cameras = await availableCameras();
     if (_cameras.isNotEmpty) {
       _controller = CameraController(
-        _cameras.firstWhere(
-            (camera) => camera.lensDirection == CameraLensDirection.front),
+        _cameras.firstWhere((camera) => camera.lensDirection == CameraLensDirection.back),
         ResolutionPreset.medium,
       );
 

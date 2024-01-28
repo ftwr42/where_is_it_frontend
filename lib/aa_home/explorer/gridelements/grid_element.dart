@@ -42,8 +42,8 @@ class GridElementView extends GetView<GridElementController> {
                         color: Colors.white,
                         child: Expanded(
                           child: Image(
-                            height: 180,
-                            width: 180,
+                            height: 120,
+                            width: 120,
                             image: model.image,
                           ),
                         )

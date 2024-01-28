@@ -45,12 +45,14 @@ class DrawerView extends GetView<WiiDrawerController> {
   Widget build(BuildContext context) {
     return Drawer(
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            buildHeader(context),
-            buildMenuItems(context),
-          ],
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              buildHeader(context),
+              buildMenuItems(context),
+            ],
+          ),
         ),
       ),
     );

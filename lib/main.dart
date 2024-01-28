@@ -10,6 +10,7 @@ void main() {
   Get.put(WiiDrawerController());
   Get.put(ExplorerController());
   Get.put(GridElementController());
+  // Get.put(FastElementController());
   runApp(WiiApp());
 }
 

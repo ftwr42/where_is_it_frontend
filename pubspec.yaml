@@ -47,6 +47,7 @@ dependencies:
   get:
   crypto:
   http:
+  file_picker: ^6.1.1
 
 dev_dependencies:
   flutter_test:
