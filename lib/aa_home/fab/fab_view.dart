@@ -2,7 +2,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import 'dialog/fast_container_creator.dart';
 import 'dialog/fast_item_creator.dart';
 
 class FabView extends StatelessWidget {
@@ -30,8 +29,7 @@ class ExpandableFab extends StatefulWidget {
   State<ExpandableFab> createState() => _ExpandableFabState();
 }
 
-class _ExpandableFabState extends State<ExpandableFab>
-    with SingleTickerProviderStateMixin {
+class _ExpandableFabState extends State<ExpandableFab> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _expandAnimation;
   bool _open = false;
@@ -112,9 +110,7 @@ class _ExpandableFabState extends State<ExpandableFab>
     final children = <Widget>[];
     const count = 2;
     final step = 90.0 / (count - 1);
-    for (var i = 0, angleInDegrees = 0.0;
-        i < count;
-        i++, angleInDegrees += step) {
+    for (var i = 0, angleInDegrees = 0.0; i < count; i++, angleInDegrees += step) {
       children.add(
         _ExpandingActionButton(
           directionInDegrees: 90, //todo changed angle in degress here to 90
@@ -128,8 +124,8 @@ class _ExpandableFabState extends State<ExpandableFab>
                   context: context,
                   builder: (context) {
                     return (i == 0)
-                        ? FastItemCreator(context)
-                        : FastContainerCreator(context);
+                        ? FastElementCreator(context, false)
+                        : FastElementCreator(context, true);
                   },
                 );
               },
