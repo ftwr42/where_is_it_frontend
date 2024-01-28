@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_home/fab/dialog/fast_container_creator_state.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
-import 'package:where_is_it/store/fab/dialog/fast_container_creator_state.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
 class FastContainerCreator extends StatelessWidget {
   FastContainerCreator(BuildContext context, {super.key});
@@ -71,7 +71,7 @@ class FastContainerCreator extends StatelessWidget {
       );
 
   Widget title() {
-    var style = WiiTextStyles.header1Style();
+    var style = ProjectTextStyles.header1Style();
     return Text(
       "Container",
       style: style,

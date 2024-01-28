@@ -1,4 +1,6 @@
 class ProfileModel {
+  static List<ProfileModel> models = [];
+
   String firstName = "Jan";
   String lastName = "Freirich";
   String email = "JanFreirich(at)gmail.com";

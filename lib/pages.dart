@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:where_is_it/aa_home/home_page.dart';
+import 'package:where_is_it/aa_model/StoreModel.dart';
 import 'package:where_is_it/loginview/login_view.dart';
 import 'package:where_is_it/profile/profile_page.dart';
-import 'package:where_is_it/store/fab/dialog/fast_item_creator.dart';
-import 'package:where_is_it/store/store_view.dart';
+import 'package:where_is_it/store/store_page.dart';
 import 'package:where_is_it/zz_networkmanager/network_example_screen.dart';
 
 import 'elements/container/container_view.dart';
@@ -35,14 +36,15 @@ class WiiPages {
 
   static List<GetPage> getPages() {
     return [
-      GetPage(name: '/', page: () => StoreView()),
-      GetPage(name: '/profile', page: () => StoreView()),
+      GetPage(name: '/', page: () => HomePage()),
+      GetPage(name: '/profile', page: () => ProfilePage()),
+      GetPage(name: '/store', page: () => StorePage(model: StoreModel.models[0])),
     ];
   }
 
   static Map<String, WidgetBuilder> routes(BuildContext context) {
     return <String, WidgetBuilder>{
-      EXPLORERVIEW: (context) => StoreView(),
+      // EXPLORERVIEW: (context) => StoreView(),
       ITEMVIEW: (context) => const ItemView(),
       CONTAINERVIEW: (context) => const ContainerView(),
       LOGINVIEW: (context) => const LoginView(),
@@ -50,9 +52,9 @@ class WiiPages {
       CURRENTEXAMPLE: (context) => FirstScreen(),
       CURRENTEXAMPLE2: (context) => SecondScreen(),
       NETWORKEXAMPLE: (context) => const NetworkExampleScreen(),
-      FABDIALOG1: (context) => FastItemCreator(context),
-      FABDIALOG2: (context) => FastItemCreator(context),
-      FABDIALOG3: (context) => FastItemCreator(context),
+      // FABDIALOG1: (context) => FastItemCreator(context),
+      // FABDIALOG2: (context) => FastItemCreator(context),
+      // FABDIALOG3: (context) => FastItemCreator(context),
       USERVIEW: (context) => ProfilePage(),
     };
   }

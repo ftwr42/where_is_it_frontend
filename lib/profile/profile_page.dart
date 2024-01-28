@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 import 'package:where_is_it/drawer/drawer_controller.dart';
-import 'package:where_is_it/profile/profile_model.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
+
+import '../aa_model/ProfileModel.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_home/fab/dialog/fast_item_creator_state.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
-import 'package:where_is_it/store/fab/dialog/fast_item_creator_state.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 
 class FastItemCreator extends StatelessWidget {
@@ -76,7 +76,7 @@ class FastItemCreator extends StatelessWidget {
       );
 
   Widget title() {
-    var style = WiiTextStyles.header1Style();
+    var style = ProjectTextStyles.header1Style();
     return Text(
       "Item",
       style: style,

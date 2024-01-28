@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_model/StoreModel.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 import 'package:where_is_it/drawer/drawer_controller.dart';
-import 'package:where_is_it/store/store_properties_state.dart';
+import 'package:where_is_it/store/store_page.dart';
 
 import '../pages.dart';
 
@@ -95,11 +96,11 @@ class DrawerView extends GetView<WiiDrawerController> {
               children: [
                 Text(
                   '${controller.getProfileModel.firstName} ${controller.getProfileModel.lastName}',
-                  style: WiiTextStyles.credentials_name_style(),
+                  style: ProjectTextStyles.credentials_name_style(),
                 ),
                 Text(
                   '${controller.getProfileModel.email}',
-                  style: WiiTextStyles.credentials_name_style(),
+                  style: ProjectTextStyles.credentials_name_style(),
                 ),
               ],
             ),
@@ -110,7 +111,7 @@ class DrawerView extends GetView<WiiDrawerController> {
   }
 
   Widget buildMenuItems(BuildContext context) {
-    var state = StoreState();
+    // var state = StoreState();
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -122,7 +123,15 @@ class DrawerView extends GetView<WiiDrawerController> {
           ),
           Divider(),
           Column(
-            children: state.stores.map((e) => drawerItem(context, e)).toList(),
+            children: controller.getStoreModel.map((e) => storeItem(context, e)).toList() +
+                [
+                  Container(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Center(child: Icon(Icons.add_circle_outline)),
+                    ),
+                  ),
+                ],
           ),
           Divider(),
           Column(
@@ -132,6 +141,17 @@ class DrawerView extends GetView<WiiDrawerController> {
       ),
     );
   }
+
+  Widget storeItem(BuildContext context, StoreModel item) => ListTile(
+        leading: Icon(Icons.store),
+        title: Text(item.name),
+        subtitle: Text(item.shortDescription),
+        onTap: () {
+          Get.to(StorePage(
+            model: item,
+          ));
+        },
+      );
 
   Widget drawerItem(BuildContext context, Map<String, dynamic> item) => ListTile(
         leading: item['leading'],

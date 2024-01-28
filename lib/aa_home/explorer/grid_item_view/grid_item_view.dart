@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
 class GridItemView extends StatefulWidget {
   late Map<String, dynamic> element;
@@ -36,7 +36,7 @@ class _GridItemViewState extends State<GridItemView> {
             child: Center(
               child: Text(
                 "Item",
-                style: WiiTextStyles.header1Style(),
+                style: ProjectTextStyles.header1Style(),
               ),
             ),
           ),

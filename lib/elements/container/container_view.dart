@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
 class ContainerView extends StatelessWidget {
   const ContainerView({super.key});
@@ -25,7 +25,7 @@ class ContainerView extends StatelessWidget {
         child: Center(
           child: Text(
             "Container View",
-            style: WiiTextStyles.header1Style(),
+            style: ProjectTextStyles.header1Style(),
           ),
         ),
       );
@@ -87,8 +87,7 @@ class ContainerView extends StatelessWidget {
   Widget itemDescription() => Container(
         child: TextField(
           maxLines: null, // Setzen Sie maxLines auf null für mehrere Zeilen
-          keyboardType:
-              TextInputType.multiline, // Erlaubt Eingabe von mehreren Zeilen
+          keyboardType: TextInputType.multiline, // Erlaubt Eingabe von mehreren Zeilen
           decoration: InputDecoration(
             hintText: 'Geben Sie hier Ihre Beschreibung ein...',
             border: OutlineInputBorder(),

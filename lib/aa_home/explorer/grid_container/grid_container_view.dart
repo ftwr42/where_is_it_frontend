@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/aa_assets/styles/text.dart';
+import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
 class GridContainerView extends StatefulWidget {
   late Map<String, dynamic> element;
@@ -27,8 +27,7 @@ class _GridContainerViewState extends State<GridContainerView> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Align(
-          alignment: Alignment.topLeft, child: Icon(Icons.add_circle_outline)),
+      Align(alignment: Alignment.topLeft, child: Icon(Icons.add_circle_outline)),
       Column(
         children: [
           Container(
@@ -37,7 +36,7 @@ class _GridContainerViewState extends State<GridContainerView> {
             child: Center(
               child: Text(
                 "Container",
-                style: WiiTextStyles.header1Style(),
+                style: ProjectTextStyles.header1Style(),
               ),
             ),
           ),
