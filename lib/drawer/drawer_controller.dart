@@ -12,13 +12,44 @@ class WiiDrawerController extends RxController {
     _profile.refresh();
   }
 
-  RxList<StoreModel> _store = StoreModel.models.obs;
+  // RxList<Map<String, dynamic>> _stores = RxList(
+  //   [
+  //     {"name": "Store West", "id": "westid", "shortdescription": "store in the west"},
+  //     {"name": "Store Nort", "id": "northid", "shortdescription": "store in the north"},
+  //     {"name": "Store East", "id": "eastid", "shortdescription": "store in the east"},
+  //   ],
+  // );
 
-  List<StoreModel> get getStoreModel => _store.value;
+  RxString activeStore = "westid".obs;
+
+  void changeActiveStore(String id) {
+    activeStore.value = id;
+    activeStore.refresh();
+  }
+
+  RxList<StoreModel> _stores = RxList(
+    [
+      StoreModel(name: "Store West", id: "westid", shortDescription: "store in the west"),
+      StoreModel(name: "Store Nort", id: "northid", shortDescription: "store in the north"),
+      StoreModel(name: "Store East", id: "eastid", shortDescription: "store in the east"),
+    ],
+  );
+
+  // RxList<Map<String, dynamic>> get getStores => _stores;
+  RxList<StoreModel> get getStores => _stores;
+
+  // void addStoreModel(StoreModel model) {
+  //   _stores.add({"name": model.name, "id": model.id, "shortdescription": model.shortDescription});
+  //   _stores.refresh();
+  // }
 
   void addStoreModel(StoreModel model) {
-    _store.value.add(model);
-    _store.refresh();
+    _stores.add(model);
+    _stores.refresh();
+  }
+
+  void changeStoreModel() {
+    _stores.refresh();
   }
 
   // @override

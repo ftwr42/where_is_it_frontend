@@ -110,8 +110,52 @@ class DrawerView extends GetView<WiiDrawerController> {
     );
   }
 
+  var counter = 0;
+
   Widget buildMenuItems(BuildContext context) {
     // var state = StoreState();
+
+    // var storex = Obx(() {
+    //   var stores = controller.getStores;
+    //   Iterator<Map<String, dynamic>> getStores = stores.iterator;
+    //   List<Widget> s = <Widget>[];
+    //   for (int i = 0; i < stores.length; ++i) {
+    //     getStores.moveNext();
+    //     var current = getStores.current;
+    //     var name = current['name'];
+    //     var id = current['id'];
+    //     var shortdescription = current['shortdescription'];
+    //
+    //     var item =
+    //         storeItem(context, StoreModel(name: name, id: id, shortDescription: shortdescription));
+    //     s.add(item);
+    //   }
+    //
+    //   return Column(
+    //     children: s,
+    //   );
+    // });
+
+    var storex = Obx(() {
+      var stores = controller.getStores;
+      Iterator<StoreModel> getStores = stores.iterator;
+      List<Widget> s = <Widget>[];
+      for (int i = 0; i < stores.length; ++i) {
+        getStores.moveNext();
+        var current = getStores.current;
+        var item;
+        if (controller.activeStore == current.id) {
+          item = storeItem(context, current, true);
+        } else {
+          item = storeItem(context, current, false);
+        }
+        s.add(item);
+      }
+
+      return Column(
+        children: s,
+      );
+    });
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -123,15 +167,17 @@ class DrawerView extends GetView<WiiDrawerController> {
           ),
           Divider(),
           Column(
-            children: controller.getStoreModel.map((e) => storeItem(context, e)).toList() +
-                [
-                  Container(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Center(child: Icon(Icons.add_circle_outline)),
-                    ),
-                  ),
-                ],
+            children: [
+              storex,
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(StorePage(model: StoreModel()));
+                  },
+                  child: Center(child: Icon(Icons.add_circle_outline)),
+                ),
+              ),
+            ],
           ),
           Divider(),
           Column(
@@ -142,15 +188,21 @@ class DrawerView extends GetView<WiiDrawerController> {
     );
   }
 
-  Widget storeItem(BuildContext context, StoreModel item) => ListTile(
-        leading: Icon(Icons.store),
-        title: Text(item.name),
-        subtitle: Text(item.shortDescription),
-        onTap: () {
-          Get.to(StorePage(
-            model: item,
-          ));
-        },
+  Widget storeItem(BuildContext context, StoreModel model, bool active) => Container(
+        color: active ? Colors.lightBlueAccent : null,
+        child: ListTile(
+          leading: Icon(Icons.store),
+          trailing: GestureDetector(
+              onTap: () {
+                Get.to(StorePage(model: model));
+              },
+              child: Icon(Icons.edit)),
+          title: Text(model.name),
+          subtitle: Text(model.shortDescription),
+          onTap: () {
+            controller.activeStore.value = model.id;
+          },
+        ),
       );
 
   Widget drawerItem(BuildContext context, Map<String, dynamic> item) => ListTile(

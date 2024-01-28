@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:where_is_it/aa_model/StoreModel.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
+import 'package:where_is_it/drawer/drawer_controller.dart';
 
 class StorePage extends StatelessWidget {
   late StoreModel model;
@@ -33,9 +35,13 @@ class StorePage extends StatelessWidget {
               "${model.shortDescription}", controllerShortDescription),
           ElevatedButton(
               onPressed: () {
-                // store['name'] = controllerName.text;
-                // store['id'] = controllerId.text;
+                model.name = controllerName.text;
+                model.id = controllerId.text;
+                model.shortDescription = controllerShortDescription.text;
                 // NetworkManager.sendPostRequestStore(jsonEncode(store));
+                var find = Get.find<WiiDrawerController>();
+                find.getStores.addIf(!find.getStores.contains(model), model);
+                find.changeStoreModel();
                 Navigator.of(context).pop();
               },
               child: Text("SAVE"))

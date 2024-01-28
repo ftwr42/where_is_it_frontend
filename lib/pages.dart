@@ -38,7 +38,11 @@ class WiiPages {
     return [
       GetPage(name: '/', page: () => HomePage()),
       GetPage(name: '/profile', page: () => ProfilePage()),
-      GetPage(name: '/store', page: () => StorePage(model: StoreModel.models[0])),
+      GetPage(
+          name: '/store',
+          page: () => StorePage(
+                model: StoreModel(name: "", id: "", shortDescription: ""),
+              )),
     ];
   }
 
