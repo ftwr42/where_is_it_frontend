@@ -1,51 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_it/aa_home/explorer/explorer_state.dart';
-import 'package:where_is_it/pages.dart';
+import 'package:get/get.dart';
+import 'package:where_is_it/aa_home/explorer/explorer_controller.dart';
+import 'package:where_is_it/aa_home/explorer/gridelements/grid_element.dart';
 
-class ExplorerView extends StatelessWidget {
+class ExplorerView extends GetView<ExplorerController> {
   const ExplorerView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var state = ExplorerState();
-    var elements = state.elements;
-
-    return SliverGrid(
-      delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          var element = elements[index];
-          return GestureDetector(
-              onLongPress: () {
-                var navigateTo;
-                if (element['type'] == 'container') {
-                  navigateTo =
-                      WiiPages.navigateTo(context, WiiPages.CONTAINERVIEW, WiiPages.DIRECTION_TOP);
-                } else {
-                  navigateTo =
-                      WiiPages.navigateTo(context, WiiPages.ITEMVIEW, WiiPages.DIRECTION_TOP);
-                }
-
-                Navigator.push(context, navigateTo);
-              },
-              onTap: () {
-                var navigateTo =
-                    WiiPages.navigateTo(context, WiiPages.EXPLORERVIEW, WiiPages.DIRECTION_RIGHT);
-                Navigator.push(context, navigateTo);
-              },
-              child: elementWidgetType(elements, index));
-        },
-        childCount: elements.length,
-      ),
-      gridDelegate: elementGridDelegate(2),
+    var obx = Obx(
+      () {
+        var getGridElements = controller.getGridElements;
+        return SliverGrid(
+          delegate: SliverChildBuilderDelegate(childCount: getGridElements.length,
+              (BuildContext context, int index) {
+            return GridElementView(model: getGridElements[index]);
+          }),
+          gridDelegate: elementGridDelegate(2),
+        );
+      },
     );
-  }
 
-  StatefulWidget elementWidgetType(List<Map<String, dynamic>> elements, int index) {
-    // if (elements[index]['type'] == 'container') {
-    //   return GridContainerView(elements[index]);
-    // } else {
-    //   return GridItemView(elements[index]);
-    // }
+    return obx;
   }
 
   SliverGridDelegateWithFixedCrossAxisCount elementGridDelegate(int crossAxisCount) =>

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
-class GridContainerView extends StatefulWidget {
+class GridItemView extends StatefulWidget {
   late Map<String, dynamic> element;
 
-  GridContainerView(this.element, {super.key});
+  GridItemView(this.element, {super.key});
 
   @override
-  State<GridContainerView> createState() => _GridContainerViewState();
+  State<GridItemView> createState() => _GridItemViewState();
 }
 
-class _GridContainerViewState extends State<GridContainerView> {
+class _GridItemViewState extends State<GridItemView> {
   Map<String, dynamic> element = {
     'color': Colors.lightGreen,
     'type': "container",
     'name': "Doggy",
     'short_description': "A small super sweet Doggy",
-    'image': AssetImage('assets/images/237-536x354.jpg'),
+    'image': AssetImage('assets/images/hund_schwarz.jpg'),
   };
 
   // @override
@@ -27,15 +27,15 @@ class _GridContainerViewState extends State<GridContainerView> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Align(alignment: Alignment.topLeft, child: Icon(Icons.add_circle_outline)),
+      Align(alignment: Alignment.topLeft, child: Icon(Icons.ac_unit_sharp)),
       Column(
         children: [
           Container(
             // height: 150,
-
+            // color: Colors.amberAccent,
             child: Center(
               child: Text(
-                "Container",
+                "Item",
                 style: ProjectTextStyles.header1Style(),
               ),
             ),

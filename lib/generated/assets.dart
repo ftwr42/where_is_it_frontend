@@ -2,8 +2,10 @@
 class Assets {
   Assets._();
 
-  static const String iconsScrewdriver = 'assets/icons/screwdriver.ico';
-  static const String images237536x354 = 'assets/images/237-536x354.jpg';
-  static const String imagesDefaultItem237536x354 =
-      'assets/images/default_item_237-536x354.jpg';
+  static const String imagesHundSchwarz = 'assets/images/hund_schwarz.jpg';
+  static const String imagesHundWeis = 'assets/images/hund_weis.jpg';
+  static const String imagesHundebox1 = 'assets/images/hundebox1.jpg';
+  static const String imagesHundebox2 = 'assets/images/hundebox2.jpg';
+  static const String imagesKatze = 'assets/images/katze.jpg';
+  static const String imagesMaus = 'assets/images/maus.jpeg';
 }

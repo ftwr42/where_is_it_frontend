@@ -67,7 +67,7 @@ class ContainerView extends StatelessWidget {
   Widget itemImage() => Container(
         child: ClipOval(
           child: Image.asset(
-            'assets/images/237-536x354.jpg',
+            'assets/images/hund_schwarz.jpg',
             width: 536 / 2,
             height: 354 / 2,
           ),

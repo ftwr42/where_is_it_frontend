@@ -69,7 +69,7 @@ class DrawerView extends GetView<WiiDrawerController> {
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                   child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/237-536x354.jpg'),
+                    backgroundImage: AssetImage('assets/images/hund_schwarz.jpg'),
                     radius: 50,
                   ),
                 ),
@@ -113,29 +113,6 @@ class DrawerView extends GetView<WiiDrawerController> {
   var counter = 0;
 
   Widget buildMenuItems(BuildContext context) {
-    // var state = StoreState();
-
-    // var storex = Obx(() {
-    //   var stores = controller.getStores;
-    //   Iterator<Map<String, dynamic>> getStores = stores.iterator;
-    //   List<Widget> s = <Widget>[];
-    //   for (int i = 0; i < stores.length; ++i) {
-    //     getStores.moveNext();
-    //     var current = getStores.current;
-    //     var name = current['name'];
-    //     var id = current['id'];
-    //     var shortdescription = current['shortdescription'];
-    //
-    //     var item =
-    //         storeItem(context, StoreModel(name: name, id: id, shortDescription: shortdescription));
-    //     s.add(item);
-    //   }
-    //
-    //   return Column(
-    //     children: s,
-    //   );
-    // });
-
     var storex = Obx(() {
       var stores = controller.getStores;
       Iterator<StoreModel> getStores = stores.iterator;

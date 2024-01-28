@@ -1,9 +1,13 @@
-class GridElementModel {
-  String name = "";
-  String id = "";
-  String type = "";
-  String description = "";
-  String isinid = "";
+import 'package:flutter/material.dart';
 
-  GridElementModel(this.name, this.id, this.type, this.description, this.isinid);
+class GridElementModel {
+  String type;
+  String name;
+  String shortDescription;
+  late AssetImage image;
+
+  GridElementModel(String imagePath,
+      {required this.type, required this.name, required this.shortDescription}) {
+    image = AssetImage(imagePath);
+  }
 }

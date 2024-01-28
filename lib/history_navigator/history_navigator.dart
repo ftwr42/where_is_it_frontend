@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
 List<Map<String, dynamic>> elements = [
-  {'text': 'Test 1', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 2', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 3', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 1', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 2', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 3', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 1', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 2', 'image': AssetImage('assets/images/237-536x354.jpg')},
-  {'text': 'Test 3', 'image': AssetImage('assets/images/237-536x354.jpg')},
+  {'text': 'Test 1', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 2', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 3', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 1', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 2', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 3', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 1', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 2', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
+  {'text': 'Test 3', 'image': AssetImage('assets/images/hund_schwarz.jpg')},
 ];
 
-Map<String, dynamic> concat = {
-  'image': AssetImage('assets/images/237-536x354.jpg')
-};
+Map<String, dynamic> concat = {'image': AssetImage('assets/images/hund_schwarz.jpg')};
 
 class HistoryNavigator extends StatelessWidget {
   const HistoryNavigator({super.key});
