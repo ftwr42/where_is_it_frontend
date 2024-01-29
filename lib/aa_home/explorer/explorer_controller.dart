@@ -3,7 +3,7 @@ import 'package:where_is_it/aa_model/grid_element_model.dart';
 import 'package:where_is_it/generated/assets.dart';
 
 class ExplorerController extends RxController {
-  RxList<GridElementModel> _gridElements = RxList([
+  RxList<GridElementModel> _gridElementsSaved = RxList([
     GridElementModel(Assets.imagesHundebox1,
         type: "container",
         name: "BigBox",
@@ -24,6 +24,9 @@ class ExplorerController extends RxController {
         type: "item", name: "Maus", shortDescription: "Futter für die Katze", isinid: 'storea'),
   ]);
 
+  RxList<GridElementModel> _gridElements = RxList([]);
+
+  RxList<GridElementModel> get getGridElementSaved => _gridElementsSaved;
   RxList<GridElementModel> get getGridElements => _gridElements;
 
   void addGridModel(GridElementModel model) {

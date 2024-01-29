@@ -1,18 +1,25 @@
+import 'dart:convert';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:where_is_it/aa_home/explorer/explorer_controller.dart';
+import 'package:where_is_it/aa_home/fab/dialog/fast_element_controller.dart';
 import 'package:where_is_it/aa_model/grid_element_model.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_fields.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
+import 'package:where_is_it/generated/assets.dart';
 import 'package:where_is_it/tools/camera/camera_stream_widget.dart';
+import 'package:where_is_it/zz_networkmanager/network_manager.dart';
 
-class FastElementCreator extends GetView<ExplorerController> {
+class FastElementCreator extends GetView<FastElementController> {
   late String type;
   FastElementCreator(BuildContext context, bool isItem, {super.key}) {
     type = (isItem) ? 'item' : 'container';
   }
+
+  var newElement;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +35,7 @@ class FastElementCreator extends GetView<ExplorerController> {
         child: Column(
           children: [
             title(),
+            Obx(() => controller.getImageWidget),
             const SizedBox(
               height: 10,
             ),
@@ -48,14 +56,24 @@ class FastElementCreator extends GetView<ExplorerController> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    var imageUpload2 = imageUpload().then((value) {
-                      var name = textEditingControllerName.text;
-                      var shortDescription = textEditingControllerShortDescription.text;
-                      var find = Get.find<ExplorerController>();
-                      find.addGridModel(GridElementModel(value!,
-                          name: name, isinid: 'storea', shortDescription: shortDescription));
+                    // var pickImage = ImagePicker()
+                    //     .pickImage(source: ImageSource.gallery, maxWidth: 150, maxHeight: 150);
+                    // var whenComplete = pickImage.whenComplete(() => null);
+                    // whenComplete.then((value) => controller.change(value!));
+                    // build(context);
+                    // var image = getImage();
+                    // image.then((value) => controller.change(value!));
+
+                    Future<FilePickerResult?> result = FilePicker.platform.pickFiles();
+                    result.then((value) {
+                      if (value != null) {
+                        // File file = File(result.files.single.path!);
+
+                        controller.change(value.files[0].path!);
+                      } else {
+                        // User canceled the picker
+                      }
                     });
-                    build(context);
                   },
                   child: const Center(
                     child: Text("UPLOAD PHOTO"),
@@ -70,17 +88,17 @@ class FastElementCreator extends GetView<ExplorerController> {
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            // var name = textEditingControllerName.text;
-            // var shortDescription = textEditingControllerShortDescription.text;
-            //
-            // item['name'] = name;
-            // item['shortdescription'] = shortDescription;
-            // item['isinid'] = "store_a"; //todo get current container id we are just in
-            // // NetworkManager.sendPostRequestItems(jsonEncode(item));
-            //
-            // var find = Get.find<ExplorerController>();
-            // find.addGridModel(new GridElementModel(Assets.imagesKatze,
-            //     type: type, isinid: "store_a", name: name, shortDescription: shortDescription));
+            var name = textEditingControllerName.text;
+            var shortDescription = textEditingControllerShortDescription.text;
+
+            item['name'] = name;
+            item['shortdescription'] = shortDescription;
+            item['isinid'] = "store_a"; //todo get current container id we are just in
+            NetworkManager.sendPostRequestItems(jsonEncode(item));
+
+            var find = Get.find<ExplorerController>();
+            find.addGridModel(GridElementModel(Assets.imagesKatze,
+                type: type, isinid: "store_a", name: name, shortDescription: shortDescription));
 
             Navigator.of(context).pop();
           },
@@ -115,14 +133,18 @@ class FastElementCreator extends GetView<ExplorerController> {
     );
   }
 
-  Future<String?> imageUpload() async {
-    FilePickerResult? pickFiles = await FilePicker.platform.pickFiles(type: FileType.any);
+  Future<XFile?> getImage() {
+    // Future<XFile?> img =  imageUpload();
+    Future<XFile?> img = imageUpload();
+    return img;
+  }
 
-    var path2 = pickFiles!.files.first.path;
-    print(path2);
+  Future<XFile?> imageUpload() async {
+    var imagePicker = ImagePicker();
+    var source = imagePicker.supportsImageSource(ImageSource.gallery);
+    var pickImage = imagePicker.pickImage(source: ImageSource.gallery);
 
-    var applicationDocumentsDirectory = getApplicationDocumentsDirectory();
-    return path2;
+    return pickImage;
 
     // return Center(
     //   child: Column(

@@ -43,7 +43,7 @@ dependencies:
   path_provider: ^2.1.2
   path: ^1.8.3
   url_launcher:
-  image_picker: ^0.8.5+3
+  image_picker: ^1.0.7
   get:
   crypto:
   http:

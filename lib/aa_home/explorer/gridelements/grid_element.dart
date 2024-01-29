@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:where_is_it/aa_home/explorer/elements/elements_page.dart';
 import 'package:where_is_it/aa_home/explorer/explorer_controller.dart';
 import 'package:where_is_it/aa_home/explorer/gridelements/grid_element_controller.dart';
+import 'package:where_is_it/aa_home/home_page.dart';
 import 'package:where_is_it/aa_model/grid_element_model.dart';
 import 'package:where_is_it/aa_project_defaults/project_text_styles.dart';
 
@@ -16,6 +17,9 @@ class GridElementView extends GetView<GridElementController> {
     return GestureDetector(
       onLongPress: () {
         Get.to(ElementsPage(model: model));
+      },
+      onTap: () {
+        Get.to(HomePage());
       },
       child: Stack(children: [
         Align(alignment: Alignment.topLeft, child: Icon(Icons.add_circle_outline)),

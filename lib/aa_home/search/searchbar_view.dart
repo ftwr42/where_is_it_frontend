@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:where_is_it/aa_home/explorer/explorer_controller.dart';
 
-class SearchBarView extends StatefulWidget {
-  @override
-  State<SearchBarView> createState() => _SearchBarViewState();
-}
-
-class _SearchBarViewState extends State<SearchBarView> {
+class SearchBarView extends GetView<ExplorerController> {
   @override
   Widget build(BuildContext context) {
     var textEditingController = TextEditingController();
+
     return SliverAppBar(
       iconTheme: null,
       primary: false,
@@ -24,9 +22,18 @@ class _SearchBarViewState extends State<SearchBarView> {
           child: TextField(
             controller: textEditingController,
             onChanged: (String value) {
-              // widget.elements.forEach((element) {
-              //   if (element.containsValue(value)) {}
-              // });
+              var getGridElements = controller.getGridElementSaved;
+              var gridElements = controller.getGridElements;
+              if (value == "" || value == " ") {
+                gridElements.removeRange(0, gridElements.length);
+                gridElements.addAll(getGridElements);
+              } else {
+                gridElements.removeRange(0, gridElements.length);
+                getGridElements.forEach((element) {
+                  if (element.name.toLowerCase().startsWith(value.toLowerCase()))
+                    gridElements.add(element);
+                });
+              }
             },
             decoration: InputDecoration(
               labelText: 'Search',

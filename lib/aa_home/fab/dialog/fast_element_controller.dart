@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:where_is_it/generated/assets.dart';
@@ -8,15 +10,14 @@ class FastElementController extends RxController {
     width: 200,
     height: 200,
   ).obs;
-  Image get getFile => _image.value;
-  Rx<Image> get getRX => _image;
+  Image get getImageWidget => _image.value;
 
   void change(String file) {
-    _image = Image.asset(
-      file,
+    var file2 = File(file);
+    _image = Image.file(
+      file2,
       width: 200,
       height: 200,
     ).obs;
-    _image.refresh();
   }
 }

@@ -102,13 +102,15 @@ class ElementsPage extends GetView<GridElementController> {
       );
 
   Widget itemProperties() {
-    var model = controller.getElementModel;
     return Container(
       child: Column(
         children: [
-          inputField("${model.name}", cName),
-          inputField("${model.isinid}", cIsinid),
-          inputField("${model.shortDescription}", cShortDescription),
+          Text("Name: ${model.name}"),
+          Text("Is In Id: ${model.isinid}"),
+          Text("Short Description: ${model.shortDescription}"),
+          inputField("Name", cName),
+          inputField("Is In Id", cIsinid),
+          inputField("Short Description", cShortDescription),
         ],
       ),
     );
